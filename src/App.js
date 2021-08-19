@@ -1,11 +1,10 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => (
-  <BrowserRouter>
-    <div>
-      APP
-    </div>
-  </BrowserRouter>
+  <div>
+    APP
+  </div>
 );
 
 export default App;
