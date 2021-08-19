@@ -153,11 +153,17 @@ The main dependencies used in this web application:
     <td></td>
   </tr>
   <tr>
-    <td>jwt-decode</td>
+  <td>jwt-decode</td>
     <td>Decodes JWTs Base64Url encoded tokens</td>
     <td>⭐️</td>
     <td></td>
     <td></td>
+  </tr>
+    <td>Bootsrap</td>
+    <td>Styling framework</td>
+    <td>⭐️</td>
+    <td></td>
+    <td>⭐️</td>
   </tr>
 </table>
 

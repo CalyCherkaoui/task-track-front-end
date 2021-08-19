@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.21.1",
+    "bootstrap": "^5.1.0",
     "chart.js": "^3.4.1",
     "history": "^5.0.0",
     "html-react-parser": "^1.2.7",
