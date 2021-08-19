@@ -1,3 +1,3 @@
-const API_root = "http://localhost:3000/api/v1/";
+const API_ROOT = 'http://localhost:3000/api/v1/';
 
-export default API_root;
+export default API_ROOT;
