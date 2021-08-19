@@ -1,7 +1,7 @@
-# Track-my | habits: Front-end client side
-
+# Task & Track | Front-end client side
 ## About the project
-In this project, I built the front-end side of a tracking application that allows you to track your daily habits. This project was built following the specifications and user stories given here:
+In this project, I built the front-end side of a tracking application that allows you to track your daily tasks to install a healty daly routine.
+This project was built following the specifications and user stories given here:
 [Click here to read the projects specifications](https://www.notion.so/Final-Capstone-Project-Tracking-App-22e454da738c46efaf17721826841772)
 
 ## Built with
@@ -184,8 +184,8 @@ The main dependencies used in this web application:
 To get a local copy of the repository, please run the following commands on your terminal:
 
 ```
-$ git clone git@github.com:CalyCherkaoui/trackmyhabits-frontend-react.git
-$ cd trackmyhabits-frontend-react
+$ git clone git@github.com:CalyCherkaoui/task-track-front-end.git
+$ cd task-track-front-end
 $ git branch feature
 $ git checkout feature
 $ npm install
