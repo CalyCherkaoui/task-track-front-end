@@ -18,24 +18,24 @@ const login = (username, email, password) => axios
   .then((response) => {
     if (response.data.headers.authorization) {
       localStorage.setItem('token', JSON.stringify(response.data.headers.authorization));
+      localStorage.setItem('user', JSON.stringify(response.data));
     }
     return response.data;
   });
 
-const logout = () => {
+const logout = async () => {
   const url = `${API_URL}logout`;
   const headers = {
     Authorization: localStorage.getItem('token'),
   };
 
-  return axios.delete(
+  const response = await axios.delete(
     url,
     headers,
-  ).then((response) => {
-    localStorage.setItem('logged-out', JSON.stringify(response.data));
-    localStorage.removeItem('token');
-    return response.data;
-  });
+  );
+  localStorage.setItem('logged-out', JSON.stringify(response.data));
+  localStorage.removeItem('token');
+  return response.data;
 };
 
 export default {
