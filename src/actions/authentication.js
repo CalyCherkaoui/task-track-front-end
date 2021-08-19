@@ -5,6 +5,8 @@ import {
   SET_MESSAGE,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
+  LOGOUT_FAIL,
 } from './types';
 
 import AuthenticationService from '../services/authentication.service';
@@ -52,6 +54,35 @@ export const login = (username, email, password) => (dispatch) => Authentication
 
     dispatch({
       type: LOGIN_FAIL,
+    });
+
+    dispatch({
+      type: SET_MESSAGE,
+      payload: message,
+    });
+
+    return Promise.reject();
+  },
+);
+
+export const logout = () => (dispatch) => AuthenticationService.logout().then(
+  (data) => {
+    dispatch({
+      type: LOGOUT,
+    });
+
+    dispatch({
+      type: SET_MESSAGE,
+      payload: data,
+    });
+
+    return Promise.resolve();
+  },
+  (error) => {
+    const message = error;
+
+    dispatch({
+      type: LOGOUT_FAIL,
     });
 
     dispatch({
