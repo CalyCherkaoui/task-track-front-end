@@ -1,12 +1,7 @@
-import React, { useState, useEffect, useSelector } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import UserService from '../services/user.service';
 
-const Profile = () => {
-  const { user: currentUser } = useSelector((state) => state.authentication);
-  if (!currentUser) {
-    return <Redirect to="/login" />;
-  }
+const Home = () => {
   const [content, setContent] = useState('');
 
   useEffect(() => {
@@ -26,16 +21,9 @@ const Profile = () => {
 
   return (
     <div className="container">
-      <h2>current user</h2>
-      <p>
-        {currentUser}
-      </p>
-      <h2>Profile content</h2>
-      <p>
-        {content}
-      </p>
+      {content}
     </div>
   );
 };
 
-export default Profile;
+export default Home;
