@@ -13,6 +13,7 @@ const Navigation = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
   const { isLoggedIn } = useSelector((state) => state.authentication);
   const dispatch = useDispatch();
+  const admin = currentUser ? currentUser.admin : false;
 
   useEffect(() => {
     history.listen((location) => {
@@ -59,7 +60,7 @@ const Navigation = () => {
             )
           }
           {
-            currentUser.admin && (
+            admin && (
             <li className="nav-item">
               <Link className="nav-link" to="/admin">
                 Admin-dashboard
