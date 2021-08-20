@@ -4,7 +4,7 @@ import API_ROOT from '../constantes/api';
 
 const API_URL = API_ROOT;
 
-const getUserProfile = (user) => axios.get(`${API_URL}users/${user.id}`, { headers: authHeader() });
+const getUserProfile = (userid) => axios.get(`${API_URL}users/${userid}`, { headers: authHeader() });
 
 const getAdminBoard = () => axios.get(`${API_URL}admin/`, { headers: authHeader() });
 
