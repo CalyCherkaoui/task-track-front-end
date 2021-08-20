@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useSelector } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import UserService from '../services/user.service';
 
 const Profile = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
+
   if (!currentUser) {
     return <Redirect to="/login" />;
   }
@@ -16,8 +18,8 @@ const Profile = () => {
       },
       (error) => {
         const errormsg = (error.response && error.response.data)
-                       || error.message
-                       || error.toString();
+                         || error.message
+                         || error.toString();
 
         setContent(errormsg);
       },
