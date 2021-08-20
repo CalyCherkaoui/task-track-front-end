@@ -173,6 +173,13 @@ The main dependencies used in this web application:
     <td></td>
     <td>⭐️</td>
   </tr>
+  <tr>
+    <td>React-Bootstrap</td>
+    <td>Bootstrap 4 components built with React</td>
+    <td>⭐️</td>
+    <td></td>
+    <td>⭐️</td>
+  </tr>
 </table>
 
 ## Linting tools
