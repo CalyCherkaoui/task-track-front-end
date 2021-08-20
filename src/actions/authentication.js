@@ -15,6 +15,7 @@ export const register = (username, email, password) => (dispatch) => Authenticat
   (response) => {
     dispatch({
       type: REGISTER_SUCCESS,
+      payload: { user: response.data },
     });
 
     dispatch({
