@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
-const AuthenticateForm = ({ submitHandler }) => {
+const AuthenticateForm = ({ submitHandler, autheticationType }) => {
   const validationSchema = Yup.object().shape({
     username: Yup.string()
       .required('Username is required')
@@ -86,7 +86,7 @@ const AuthenticateForm = ({ submitHandler }) => {
 
         <div className="form-group">
           <button type="submit" className="btn btn-primary">
-            Register
+            { autheticationType }
           </button>
           <button
             type="button"
@@ -103,6 +103,7 @@ const AuthenticateForm = ({ submitHandler }) => {
 
 AuthenticateForm.propTypes = {
   submitHandler: PropTypes.func.isRequired,
+  autheticationType: PropTypes.string.isRequired,
 };
 
 export default AuthenticateForm;
