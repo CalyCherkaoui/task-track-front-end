@@ -5,6 +5,7 @@ export const setMessage = (message) => ({
   payload: message,
 });
 
-export const clearMessage = () => ({
+export const clearMessage = (location) => ({
   type: CLEAR_MESSAGE,
+  payload: location,
 });
