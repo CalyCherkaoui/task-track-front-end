@@ -10,7 +10,7 @@ const Profile = () => {
   const [content, setContent] = useState('');
 
   useEffect(() => {
-    UserService.getUserProfile(currentUser).then(
+    UserService.getUserProfile(currentUser.id).then(
       (response) => {
         setContent(response.data);
       },
