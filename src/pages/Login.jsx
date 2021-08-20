@@ -13,6 +13,10 @@ const Login = (props) => {
 
   const dispatch = useDispatch();
 
+  if (isLoggedIn) {
+    return <Redirect to="/profile" />;
+  }
+
   const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -32,31 +36,29 @@ const Login = (props) => {
     }
   };
 
-  if (isLoggedIn) {
-    return <Redirect to="/profile" />;
-  }
-
   return (
     <div className="col-md-12">
       <div className="card card-container">
-        <AuthenticateForm submitHandler={handleLogin} />
-        <div className="form-group">
-          <button className="btn btn-primary btn-block" disabled={loading} type="submit">
-            {
-              loading && (
-              <span className="spinner-border spinner-border-sm" />
-              )
-            }
-            <span>Login</span>
-          </button>
-        </div>
-        {message && (
-        <div className="form-group">
-          <div className="alert alert-danger" role="alert">
-            {message}
+        <AuthenticateForm submitHandler={handleLogin} autheticationType="Login" />
+        {
+          loading && (
+            <div className="form-group">
+              <button className="btn btn-primary btn-block" disabled={loading} type="submit">
+                <span className="spinner-border spinner-border-sm" />
+              </button>
+            </div>
+          )
+        }
+
+        {
+          message && (
+          <div className="form-group">
+            <div className="alert alert-danger" role="alert">
+              {message}
+            </div>
           </div>
-        </div>
-        )}
+          )
+        }
       </div>
     </div>
   );
