@@ -1,5 +1,8 @@
+/* eslint-disable no-console */
+/* eslint-disable react/no-this-in-sfc */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './component/Navigation';
@@ -9,13 +12,19 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import About from './pages/About';
 import Admin from './pages/Admin';
+import NotFound from './pages/NotFound';
 import history from './helpers/history';
 
 const App = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
   // const { isLoggedIn } = useSelector((state) => state.authentication);
+  // const reloadRoute = () => {
+  //   router.push({ pathname: '/empty' });
+  //   router.replace({ pathname: '/route-to-refresh' });
+  // };
 
   return (
+    // <BrowserRouter>
     <Router history={history}>
       <Navigation />
       <div className="container mt-3">
@@ -27,13 +36,16 @@ const App = () => {
               <Route exact path={['/', '/about']} component={About} />
             )
           }
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
+          <Route path="/login" onClick={() => console.log('login here')} component={Login} />
+          <Route exact path="/signup" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/admin" component={Admin} />
+          { /* Catch all route */ }
+          <Route path="*" component={NotFound} status={404} />
         </Switch>
       </div>
     </Router>
+    // </BrowserRouter>
   );
 };
 
