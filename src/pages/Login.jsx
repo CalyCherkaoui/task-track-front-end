@@ -13,7 +13,7 @@ const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
-        `Required to login!`
+        Required to login!
       </div>
     );
   }
@@ -74,12 +74,6 @@ const Login = (props) => {
   return (
     <div className="col-md-12">
       <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
-
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">
             <label htmlFor="username">
