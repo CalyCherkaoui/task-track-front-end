@@ -85,6 +85,7 @@ const Login = (props) => {
                 name="username"
                 value={username}
                 onChange={onChangeUsername}
+                placeholder="Enter your user name"
                 validations={[required]}
               />
             </label>
@@ -100,6 +101,7 @@ const Login = (props) => {
                 name="email"
                 value={email}
                 onChange={onChangeEmail}
+                placeholder="Enter your email"
                 validations={[required]}
               />
             </label>
@@ -115,6 +117,7 @@ const Login = (props) => {
                 name="password"
                 value={password}
                 onChange={onChangePassword}
+                placeholder="Enter your password"
                 validations={[required]}
               />
             </label>

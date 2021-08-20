@@ -114,6 +114,7 @@ const Register = () => {
                     type="text"
                     className="form-control"
                     name="username"
+                    placeholder="Enter your name"
                     value={username}
                     onChange={onChangeUsername}
                     validations={[required, validUsername]}
@@ -130,6 +131,7 @@ const Register = () => {
                     name="email"
                     value={email}
                     onChange={onChangeEmail}
+                    placeholder="Enter a valid Email"
                     validations={[required, validEmail]}
                   />
                 </label>
@@ -143,6 +145,7 @@ const Register = () => {
                     className="form-control"
                     name="password"
                     value={password}
+                    placeholder="Enter a strong password"
                     onChange={onChangePassword}
                     validations={[required, validPassword]}
                   />
