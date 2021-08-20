@@ -11,6 +11,7 @@ import { logout } from '../actions/authentication';
 
 const Navigation = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
+  const { isLoggedIn } = useSelector((state) => state.authentication);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,29 +36,62 @@ const Navigation = () => {
           </span>
         </Navbar.Brand>
         <Nav className="">
-          <li className="nav-item">
-            <Link className="nav-link" to="/about">About</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/home">home</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/profile">
-              Profile
-              { currentUser.username}
-            </Link>
-          </li>
-          <li className="nav-item">
-            <a href="/login" className="nav-link" onClick={logOut}>
-              LogOut
-            </a>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/signup">Register</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/login">Login</Link>
-          </li>
+
+          {
+            isLoggedIn ? (
+              <li className="nav-item">
+                <Link className="nav-link" to="/home">home</Link>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">About</Link>
+              </li>
+            )
+          }
+          {
+            currentUser && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/profile">
+                  Profile
+                  { currentUser.username}
+                </Link>
+              </li>
+            )
+          }
+          {
+            currentUser.admin && (
+            <li className="nav-item">
+              <Link className="nav-link" to="/admin">
+                Admin-dashboard
+                { currentUser.username}
+              </Link>
+            </li>
+            )
+          }
+
+          {
+            currentUser ? (
+              <li className="nav-item">
+                <a href="/login" className="nav-link" onClick={logOut}>
+                  LogOut
+                </a>
+              </li>
+            ) : (
+              <div className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">
+                    Login
+                  </Link>
+                </li>
+                <div>|</div>
+                <li className="nav-item">
+                  <Link to="/signup" className="nav-link">
+                    Sign-Up
+                  </Link>
+                </li>
+              </div>
+            )
+          }
         </Nav>
       </Navbar>
     </Router>
