@@ -7,7 +7,14 @@ const register = (username, email, password) => axios.post(`${API_URL}signup`, {
   username,
   email,
   password,
-});
+})
+  .then((response) => {
+    if (response.data.headers.authorization) {
+      localStorage.setItem('token', JSON.stringify(response.data.headers.authorization));
+      localStorage.setItem('user', JSON.stringify(response.data));
+    }
+    return response.data;
+  });
 
 const login = (username, email, password) => axios
   .post(`${API_URL}login`, {
