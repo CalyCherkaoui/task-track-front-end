@@ -10,7 +10,7 @@ const AuthenticateForm = ({ submitHandler, autheticationType }) => {
   const validationSchema = Yup.object().shape({
     username: Yup.string()
       .required('Username is required')
-      .min(6, 'Username must be at least 4 characters')
+      .min(4, 'Username must be at least 4 characters')
       .max(20, 'Username must not exceed 20 characters'),
     email: Yup.string()
       .required('Email is required')
@@ -27,7 +27,7 @@ const AuthenticateForm = ({ submitHandler, autheticationType }) => {
   const {
     register,
     handleSubmit,
-    reset,
+    // reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
@@ -88,13 +88,13 @@ const AuthenticateForm = ({ submitHandler, autheticationType }) => {
           <button type="submit" className="btn btn-primary">
             { autheticationType }
           </button>
-          <button
+          {/* <button
             type="button"
             onClick={reset}
             className="btn btn-warning float-right"
           >
             Reset
-          </button>
+          </button> */}
         </div>
       </form>
     </div>
