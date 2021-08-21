@@ -18,7 +18,7 @@ const Register = (props) => {
   }
 
   const handleSignup = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setLoading(true);
     const dataForm = JSON.stringify(e);
     if (!dataForm) {
