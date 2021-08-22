@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import API_ROOT from '../constantes/api';
 
@@ -9,9 +10,12 @@ const register = (username, email, password) => axios.post(`${API_URL}signup`, {
   password,
 })
   .then((response) => {
+    console.log(response);
     if (response.data.headers.authorization) {
       localStorage.setItem('token', JSON.stringify(response.data.headers.authorization));
       localStorage.setItem('user', JSON.stringify(response.data));
+      console.log(response.data.headers.authorization);
+      console.log(response.headers.authorization);
     }
     return response.data;
   });
@@ -23,11 +27,15 @@ const login = (username, email, password) => axios
     password,
   })
   .then((response) => {
-    if (response.data.headers.authorization) {
-      localStorage.setItem('token', JSON.stringify(response.data.headers.authorization));
-      localStorage.setItem('user', JSON.stringify(response.data));
-    }
-    return response.data;
+    console.log(response);
+    // if (response.data.headers.authorization) {
+    //   localStorage.setItem('token', JSON.stringify(response.data.headers.authorization));
+    //   localStorage.setItem('user', JSON.stringify(response.data));
+    //   console.log(response.data.headers.authorization);
+    //   console.log(response.headers.authorization);
+    // }
+    // return response.data;
+    return response;
   });
 
 const logout = async () => {
