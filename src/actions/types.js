@@ -6,3 +6,5 @@ export const LOGOUT = 'LOGOUT';
 export const LOGOUT_FAIL = 'LOGOUT_FAIL';
 export const SET_MESSAGE = 'SET_MESSAGE';
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
+export const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
+export const GET_PROFILE_FAIL = 'GET_PROFILE_FAIL';
