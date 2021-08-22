@@ -2,7 +2,7 @@
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './component/Navigation';
