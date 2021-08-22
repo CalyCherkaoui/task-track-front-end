@@ -88,13 +88,6 @@ const AuthenticateForm = ({ submitHandler, autheticationType }) => {
           <button type="submit" className="btn btn-primary">
             { autheticationType }
           </button>
-          {/* <button
-            type="button"
-            onClick={reset}
-            className="btn btn-warning float-right"
-          >
-            Reset
-          </button> */}
         </div>
       </form>
     </div>
