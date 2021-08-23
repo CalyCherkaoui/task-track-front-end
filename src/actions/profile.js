@@ -10,9 +10,11 @@ import {
 const getProfile = (userid) => async (dispatch) => {
   axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
   try {
-    const response = await axios.get(
-      `${API_ROOT}users/${userid}`,
-    );
+    const response = await axios.get(`${API_ROOT}users/${userid}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     dispatch({
       type: GET_PROFILE_SUCCESS,

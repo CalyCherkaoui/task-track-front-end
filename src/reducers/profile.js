@@ -15,7 +15,7 @@ const profileReducer = (state = initialState, action) => {
     case GET_PROFILE_FAIL:
       return {
         ...state,
-        error: action.payload.message,
+        error: action.payload,
       };
     default:
       return state;

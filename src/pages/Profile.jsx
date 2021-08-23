@@ -20,17 +20,17 @@ const Profile = () => {
     dispatch(getProfile(userid));
   }, [dispatch]);
 
-  const profile = useSelector((state) => state.profile);
+  // const profile = useSelector((state) => state.profile);
 
   return (
     <div className="container">
       <h2>current user</h2>
       <p>
-        {profile.username}
+        {/* {profile} */}
       </p>
       <h2>Profile content</h2>
       <p>
-        {profile.email}
+        {/* {profile} */}
       </p>
     </div>
   );
