@@ -48,7 +48,7 @@ export const login = (username, email, password) => async (dispatch) => {
   };
 
   try {
-    const response = await axios.post(`${API_ROOT}login`, { user: userData }, { headers }, { withCredentials: true });
+    const response = await axios.post(`${API_ROOT}login`, { user: userData }, { headers });
 
     localStorage.setItem('token', response.headers.authorization);
     localStorage.setItem('user', JSON.stringify(response.data.data.attributes));
@@ -69,23 +69,22 @@ export const login = (username, email, password) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   const headers = {
-    'Content-Type': 'application/json',
-    Authorization: localStorage.getItem('token'),
+    authorization: localStorage.getItem('token'),
   };
-  try {
-    const response = await axios.delete(`${API_ROOT}logout`, headers);
-    dispatch({
-      type: LOGOUT,
-      payload: response,
-    });
 
-    localStorage.setItem('logged-out', JSON.stringify(response.data));
+  try {
+    const response = await axios.delete(`${API_ROOT}logout`, { headers });
+    localStorage.setItem('logged-out', true);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    dispatch({
+      type: LOGOUT,
+      payload: response.data,
+    });
   } catch (error) {
     dispatch({
       type: LOGOUT_FAIL,
-      payload: error.message,
+      payload: error,
     });
   }
 };
