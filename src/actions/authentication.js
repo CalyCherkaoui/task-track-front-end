@@ -47,19 +47,12 @@ export const login = (username, email, password) => async (dispatch) => {
     password,
   };
 
-  // const autHeader = {
-  //   Authorization: 'my secret token',
-  // };
-
   try {
-    const response = await axios.post(`${API_ROOT}login`, { user: userData }, { headers });
+    const response = await axios.post(`${API_ROOT}login`, { user: userData }, { headers }, { withCredentials: true });
 
-    // localStorage.setItem('token', JSON.stringify(response.data.headers.authorization));
-    // localStorage.setItem('user', JSON.stringify(response.data));
-    // console.log(response.data.headers.authorization);
-    // eslint-disable-next-line dot-notation
-    const token = response.headers['access-token'];
-    console.log(token);
+    localStorage.setItem('token', response.headers.authorization);
+    localStorage.setItem('user', JSON.stringify(response.data.data.attributes));
+    console.log(response.headers.authorization);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -76,6 +69,7 @@ export const login = (username, email, password) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   const headers = {
+    'Content-Type': 'application/json',
     Authorization: localStorage.getItem('token'),
   };
   try {
