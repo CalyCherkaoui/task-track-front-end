@@ -25,8 +25,8 @@ export const register = (username, email, password) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_ROOT}signup`, { user: userData }, { headers });
 
-    sessionStorage.setItem('token', JSON.stringify(response.data.headers.authorization));
-    sessionStorage.setItem('user', JSON.stringify(response.data));
+    sessionStorage.setItem('token', response.data.headers.authorization);
+    sessionStorage.setItem('user', response.data);
     sessionStorage.setItem('logged-out', false);
     // console.log(response.data.headers.authorization);
     // console.log(response.headers.authorization);
@@ -56,8 +56,8 @@ export const login = (username, email, password) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_ROOT}login`, { user: userData }, { headers });
 
-    sessionStorage.setItem('token', JSON.stringify(response.headers.authorization));
-    sessionStorage.setItem('user', JSON.stringify(response.data.data.attributes));
+    sessionStorage.setItem('token', response.headers.authorization);
+    sessionStorage.setItem('user', response.data.data.attributes);
     sessionStorage.setItem('logged-out', false);
     // console.log(response.headers.authorization);
     // console.log(sessionStorage.getItem('token'));
