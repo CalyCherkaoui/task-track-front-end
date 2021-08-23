@@ -1,40 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+/* eslint-disable no-console */
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import UserService from '../services/user.service';
+import getProfile from '../actions/profile';
 
 const Profile = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
+  // const currentUser = sessionStorage.getItem('user');
+  const dispatch = useDispatch();
+  console.log(currentUser);
 
   if (!currentUser) {
     return <Redirect to="/login" />;
   }
-  const [content, setContent] = useState('');
+
+  const userid = parseInt(currentUser.id, 10);
 
   useEffect(() => {
-    UserService.getUserProfile(currentUser.id).then(
-      (response) => {
-        setContent(response.data);
-      },
-      (error) => {
-        const errormsg = (error.response && error.response.data)
-                         || error.message
-                         || error.toString();
+    dispatch(getProfile(userid));
+  }, [dispatch]);
 
-        setContent(errormsg);
-      },
-    );
-  }, []);
+  const profile = useSelector((state) => state.profile);
 
   return (
     <div className="container">
       <h2>current user</h2>
       <p>
-        {currentUser}
+        {profile.username}
       </p>
       <h2>Profile content</h2>
       <p>
-        {content}
+        {profile.email}
       </p>
     </div>
   );
