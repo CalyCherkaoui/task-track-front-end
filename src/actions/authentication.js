@@ -12,26 +12,32 @@ import {
 } from './types';
 
 export const register = (username, email, password) => async (dispatch) => {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  const userData = {
+    username,
+    email,
+    password,
+  };
+
   try {
-    const response = await axios.post(`${API_ROOT}signup`, {
-      username,
-      email,
-      password,
-    });
+    const response = await axios.post(`${API_ROOT}signup`, { user: userData }, { headers });
 
-    localStorage.setItem('token', JSON.stringify(response.data.headers.authorization));
-    localStorage.setItem('user', JSON.stringify(response.data));
-    console.log(response.data.headers.authorization);
-    console.log(response.headers.authorization);
-
+    sessionStorage.setItem('token', JSON.stringify(response.data.headers.authorization));
+    sessionStorage.setItem('user', JSON.stringify(response.data));
+    sessionStorage.setItem('logged-out', false);
+    // console.log(response.data.headers.authorization);
+    // console.log(response.headers.authorization);
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: response,
+      payload: response.data,
     });
   } catch (error) {
     dispatch({
       type: REGISTER_FAIL,
-      payload: error.message,
+      payload: error,
     });
   }
 };
@@ -50,9 +56,11 @@ export const login = (username, email, password) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_ROOT}login`, { user: userData }, { headers });
 
-    localStorage.setItem('token', response.headers.authorization);
-    localStorage.setItem('user', JSON.stringify(response.data.data.attributes));
-    console.log(response.headers.authorization);
+    sessionStorage.setItem('token', JSON.stringify(response.headers.authorization));
+    sessionStorage.setItem('user', JSON.stringify(response.data.data.attributes));
+    sessionStorage.setItem('logged-out', false);
+    // console.log(response.headers.authorization);
+    // console.log(sessionStorage.getItem('token'));
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -68,20 +76,19 @@ export const login = (username, email, password) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  const headers = {
-    authorization: localStorage.getItem('token'),
-  };
-
+  axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
   try {
-    const response = await axios.delete(`${API_ROOT}logout`, { headers });
-    localStorage.setItem('logged-out', true);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    const response = await axios.delete(`${API_ROOT}logout`);
     dispatch({
       type: LOGOUT,
       payload: response.data,
     });
+
+    sessionStorage.setItem('logged-out', true);
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
   } catch (error) {
+    console.log(error);
     dispatch({
       type: LOGOUT_FAIL,
       payload: error,

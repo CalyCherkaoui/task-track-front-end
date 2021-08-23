@@ -6,7 +6,7 @@ import {
   LOGOUT,
 } from '../actions/types';
 
-const user = JSON.parse(localStorage.getItem('user'));
+const user = JSON.parse(sessionStorage.getItem('user'));
 
 const initialState = user
   ? {
@@ -48,7 +48,7 @@ const authenticationReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         user: null,
-        message: action.payload,
+        message: action.payload.message,
       };
     default:
       return state;
