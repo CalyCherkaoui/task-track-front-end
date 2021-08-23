@@ -1,73 +1,62 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import AuthenticateForm from '../component/AuthenticateForm';
+import { useDispatch } from 'react-redux';
 import { register } from '../actions/authentication';
+// import { Redirect } from 'react-router-dom';
 
-const Register = (props) => {
-  const [loading, setLoading] = useState(false);
-
-  const { isLoggedIn } = useSelector((state) => state.authentication);
-  const { message } = useSelector((state) => state.message);
-
+const Register = () => {
   const dispatch = useDispatch();
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-  if (isLoggedIn) {
-    return <Redirect to="/profile" />;
-  }
-
-  const handleSignup = (e) => {
-    // e.preventDefault();
-    setLoading(true);
-    const dataForm = JSON.stringify(e);
-    if (!dataForm) {
-      setLoading(false);
-    } else {
-      const { username, email, password } = dataForm;
-      dispatch(register(username, email, password))
-        .then(() => {
-          props.history.push('/profile');
-          window.location.reload();
-        })
-        .catch(() => {
-          setLoading(false);
-        });
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(register(username, email, password));
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <AuthenticateForm submitHandler={handleSignup} autheticationType="Sign-up" />
-        {
-          loading && (
-            <div className="form-group">
-              <button className="btn btn-primary btn-block" disabled={loading} type="submit">
-                <span className="spinner-border spinner-border-sm" />
-              </button>
-            </div>
-          )
-        }
-
-        {
-          message && (
-          <div className="form-group">
-            <div className="alert alert-danger" role="alert">
-              {message}
-            </div>
-          </div>
-          )
-        }
-      </div>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="signup_username_input">
+        Username:
+        <input
+          id="signup_username_input"
+          type="text"
+          name="username"
+          placeholder="Enter your Username"
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </label>
+      <label htmlFor="signup_email_input">
+        Email:
+        <input
+          id="signup_email_input"
+          type="email"
+          name="email"
+          placeholder="Enter your email!"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+      <label htmlFor="signup_password_input">
+        Password:
+        <input
+          id="signup_password_input"
+          type="password"
+          name="password"
+          placeholder="Enter your password!"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </label>
+      <button
+        type="submit"
+      >
+        Sign me up!
+      </button>
+    </form>
   );
-};
-
-Register.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
 export default Register;
