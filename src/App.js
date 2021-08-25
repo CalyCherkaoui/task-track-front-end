@@ -6,6 +6,8 @@ import { Switch, Route, HashRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './component/Navigation';
+import FooterNav from './component/FooterNav';
+import Footer from './component/Footer';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
@@ -40,10 +42,21 @@ const App = () => {
           <Route exact path="/signup" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/admin" component={Admin} />
+          <Route exact path="/taskme" component={Admin} />
+          <Route exact path="/timeline" component={Admin} />
+          <Route exact path="/routines" component={Admin} />
+          <Route exact path="/routineform" component={Admin} />
           { /* Catch all route */ }
           <Route path="*" component={NotFound} status={404} />
         </Switch>
       </div>
+      {
+        isLoggedIn ? (
+          <FooterNav />
+        ) : (
+          <Footer />
+        )
+      }
     </HashRouter>
     // </BrowserRouter>
   );
