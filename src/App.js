@@ -13,7 +13,7 @@ import Profile from './pages/Profile';
 import About from './pages/About';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
-import history from './helpers/history';
+// import history from './helpers/history';
 
 const App = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     // <BrowserRouter>
-    <HashRouter history={history}>
+    <HashRouter basename="http://localhost:3000">
       <Navigation />
       <div className="container mt-3">
         <Switch>

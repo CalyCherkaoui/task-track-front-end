@@ -1,25 +1,29 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { BsCircleFill } from 'react-icons/bs';
 import { Navbar, Nav } from 'react-bootstrap';
-import { clearMessage } from '../actions/message';
 import styles from '../styles/Navigation.module.css';
-import history from '../helpers/history';
+// import history from '../helpers/history';
 import { logout } from '../actions/authentication';
 
 const Navigation = () => {
+  const history = useHistory();
+
+  if (sessionStorage.length === 0 || sessionStorage.token === 'undefined') {
+    return history.push('/logout');
+  }
+
   const { user: currentUser } = useSelector((state) => state.authentication);
   const { isLoggedIn } = useSelector((state) => state.authentication);
   const dispatch = useDispatch();
-  const admin = currentUser ? currentUser.admin : false;
-
-  useEffect(() => {
-    history.listen((location) => {
-      dispatch(clearMessage(location));
-    });
-  }, [dispatch]);
+  const admin = currentUser ? currentUser.meta.admin : false;
+  // useEffect(() => {
+  //   history.listen((location) => {
+  //     dispatch(clearMessage(location));
+  //   });
+  // }, [dispatch]);
 
   const logOut = () => {
     dispatch(logout());
