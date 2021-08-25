@@ -58,13 +58,13 @@ const FooterNav = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/records" className="nav-link">
+                  <Link to="/timeline" className="nav-link">
                     <span className={styles.nav_logo_emph}>
                       <IconContext.Provider value={{ className: 'footer_icon' }}>
                         <GoDiffAdded />
                       </IconContext.Provider>
                     </span>
-                    records
+                    timeline
                   </Link>
                 </li>
                 <li className="nav-item">
