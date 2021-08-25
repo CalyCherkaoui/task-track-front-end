@@ -6,15 +6,24 @@ import {
   LOGOUT,
 } from '../actions/types';
 
-const user = JSON.parse(sessionStorage.getItem('user'));
+// const user = sessionStorage.getItem('user');
 
-const initialState = user
-  ? {
-    isLoggedIn: true, user, error: {}, message: {},
-  }
-  : {
-    isLoggedIn: false, user: null, error: {}, message: {},
-  };
+// const initialState = user
+//   ? {
+//     isLoggedIn: true, user, error: {}, message: {},
+//   }
+//   : {
+//     isLoggedIn: false, user: null, error: {}, message: {},
+//   };
+
+const initialState = {
+  user: {},
+  id: null,
+  admin: false,
+  isLoggedIn: false,
+  error: '',
+  message: '',
+};
 
 const authenticationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -22,7 +31,9 @@ const authenticationReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
-        user: action.payload,
+        user: action.payload.data,
+        id: parseInt(action.payload.data.id, 10),
+        admin: action.payload.data.meta.admin,
       };
     case REGISTER_FAIL:
       return {
@@ -34,7 +45,9 @@ const authenticationReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
-        user: action.payload,
+        user: action.payload.data,
+        admin: action.payload.data.meta.admin,
+        id: parseInt(action.payload.data.id, 10),
       };
     case LOGIN_FAIL:
       return {
@@ -44,6 +57,7 @@ const authenticationReducer = (state = initialState, action) => {
         error: action.payload,
       };
     case LOGOUT:
+      sessionStorage.clear();
       return {
         ...state,
         isLoggedIn: false,
