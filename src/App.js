@@ -2,7 +2,7 @@
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Switch, Route, Router } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './component/Navigation';
@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     // <BrowserRouter>
-    <Router history={history}>
+    <HashRouter history={history}>
       <Navigation />
       <div className="container mt-3">
         <Switch>
@@ -44,7 +44,7 @@ const App = () => {
           <Route path="*" component={NotFound} status={404} />
         </Switch>
       </div>
-    </Router>
+    </HashRouter>
     // </BrowserRouter>
   );
 };
