@@ -1,27 +1,52 @@
+/* eslint-disable no-console */
+/* eslint-disable react/no-this-in-sfc */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './component/Navigation';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import About from './pages/About';
 import Admin from './pages/Admin';
+import NotFound from './pages/NotFound';
 import history from './helpers/history';
 
-const App = () => (
-  <Router history={history}>
-    <Navigation />
-    <div className="container mt-3">
-      <Switch>
-        <Route exact path={['/', '/home']} component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/admin" component={Admin} />
-      </Switch>
-    </div>
-  </Router>
-);
+const App = () => {
+  const { user: currentUser } = useSelector((state) => state.authentication);
+  // const { isLoggedIn } = useSelector((state) => state.authentication);
+  // const reloadRoute = () => {
+  //   router.push({ pathname: '/empty' });
+  //   router.replace({ pathname: '/route-to-refresh' });
+  // };
+
+  return (
+    // <BrowserRouter>
+    <HashRouter history={history}>
+      <Navigation />
+      <div className="container mt-3">
+        <Switch>
+          {
+            currentUser ? (
+              <Route exact path={['/', '/home']} component={Home} />
+            ) : (
+              <Route exact path={['/', '/about']} component={About} />
+            )
+          }
+          <Route path="/login" onClick={() => console.log('login here')} component={Login} />
+          <Route exact path="/signup" component={Register} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/admin" component={Admin} />
+          { /* Catch all route */ }
+          <Route path="*" component={NotFound} status={404} />
+        </Switch>
+      </div>
+    </HashRouter>
+    // </BrowserRouter>
+  );
+};
 
 export default App;

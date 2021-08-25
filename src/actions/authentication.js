@@ -1,96 +1,97 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
+import axios from 'axios';
+import API_ROOT from '../constantes/api';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  SET_MESSAGE,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
   LOGOUT_FAIL,
 } from './types';
 
-import AuthenticationService from '../services/authentication.service';
+export const register = (username, email, password) => async (dispatch) => {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
 
-export const register = (username, email, password) => (dispatch) => AuthenticationService.register(username, email, password).then(
-  (response) => {
+  const userData = {
+    username,
+    email,
+    password,
+  };
+
+  try {
+    const response = await axios.post(`${API_ROOT}signup`, { user: userData }, { headers });
+
+    sessionStorage.setItem('token', response.data.headers.authorization);
+    sessionStorage.setItem('user', response.data);
+    sessionStorage.setItem('logged-out', false);
+    // console.log(response.data.headers.authorization);
+    // console.log(response.headers.authorization);
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: { user: response.data },
+      payload: response.data,
     });
-
-    dispatch({
-      type: SET_MESSAGE,
-      payload: response.data.message, // verify how errors are handled in the backend
-    });
-
-    return Promise.resolve();
-  },
-  (error) => {
-    const message = error; // verify how errors are handled in the backend
-
+  } catch (error) {
     dispatch({
       type: REGISTER_FAIL,
+      payload: error,
     });
+  }
+};
 
-    dispatch({
-      type: SET_MESSAGE,
-      payload: message,
-    });
+export const login = (username, email, password) => async (dispatch) => {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
 
-    return Promise.reject();
-  },
-);
+  const userData = {
+    username,
+    email,
+    password,
+  };
 
-export const login = (username, email, password) => (dispatch) => AuthenticationService.login(username, email, password).then(
-  (data) => {
+  try {
+    const response = await axios.post(`${API_ROOT}login`, { user: userData }, { headers });
+
+    sessionStorage.setItem('token', response.headers.authorization);
+    sessionStorage.setItem('user', response.data.data.attributes);
+    sessionStorage.setItem('logged-out', false);
+    // console.log(response.headers.authorization);
+    // console.log(sessionStorage.getItem('token'));
+
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: { user: data },
+      payload: response.data,
     });
-
-    return Promise.resolve();
-  },
-  (error) => {
-    const message = error;
-
+  } catch (error) {
+    console.log(error);
     dispatch({
       type: LOGIN_FAIL,
+      payload: error.message,
     });
+  }
+};
 
-    dispatch({
-      type: SET_MESSAGE,
-      payload: message,
-    });
-
-    return Promise.reject();
-  },
-);
-
-export const logout = () => (dispatch) => AuthenticationService.logout().then(
-  (data) => {
+export const logout = () => async (dispatch) => {
+  axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
+  try {
+    const response = await axios.delete(`${API_ROOT}logout`);
     dispatch({
       type: LOGOUT,
+      payload: response.data,
     });
 
-    dispatch({
-      type: SET_MESSAGE,
-      payload: data,
-    });
-
-    return Promise.resolve();
-  },
-  (error) => {
-    const message = error;
-
+    sessionStorage.setItem('logged-out', true);
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+  } catch (error) {
+    console.log(error);
     dispatch({
       type: LOGOUT_FAIL,
+      payload: error,
     });
-
-    dispatch({
-      type: SET_MESSAGE,
-      payload: message,
-    });
-
-    return Promise.reject();
-  },
-);
+  }
+};

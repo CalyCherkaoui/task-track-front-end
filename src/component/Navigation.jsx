@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { BsCircleFill } from 'react-icons/bs';
 import { Navbar, Nav } from 'react-bootstrap';
@@ -13,6 +13,7 @@ const Navigation = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
   const { isLoggedIn } = useSelector((state) => state.authentication);
   const dispatch = useDispatch();
+  const admin = currentUser ? currentUser.admin : false;
 
   useEffect(() => {
     history.listen((location) => {
@@ -25,19 +26,19 @@ const Navigation = () => {
   };
 
   return (
-    <Router history={history}>
-      <Navbar className="justify-content-between">
-        <Navbar.Brand href="/">
-          Task & Track
-          <span className={styles.nav_logo_emph}>
-            <IconContext.Provider value={{ className: 'logo_icon' }}>
-              <BsCircleFill />
-            </IconContext.Provider>
-          </span>
-        </Navbar.Brand>
-        <Nav className="">
+    // <Router history={history}>
+    <Navbar className="justify-content-between">
+      <Navbar.Brand href="/">
+        Task & Track
+        <span className={styles.nav_logo_emph}>
+          <IconContext.Provider value={{ className: 'logo_icon' }}>
+            <BsCircleFill />
+          </IconContext.Provider>
+        </span>
+      </Navbar.Brand>
+      <Nav className="">
 
-          {
+        {
             isLoggedIn ? (
               <li className="nav-item">
                 <Link className="nav-link" to="/home">home</Link>
@@ -48,7 +49,7 @@ const Navigation = () => {
               </li>
             )
           }
-          {
+        {
             currentUser && (
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
@@ -58,8 +59,8 @@ const Navigation = () => {
               </li>
             )
           }
-          {
-            currentUser.admin && (
+        {
+            admin && (
             <li className="nav-item">
               <Link className="nav-link" to="/admin">
                 Admin-dashboard
@@ -69,7 +70,7 @@ const Navigation = () => {
             )
           }
 
-          {
+        {
             currentUser ? (
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={logOut}>
@@ -92,9 +93,9 @@ const Navigation = () => {
               </div>
             )
           }
-        </Nav>
-      </Navbar>
-    </Router>
+      </Nav>
+    </Navbar>
+  // </Router>
 
   );
 };
