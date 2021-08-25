@@ -16,8 +16,8 @@ import NotFound from './pages/NotFound';
 // import history from './helpers/history';
 
 const App = () => {
-  const { user: currentUser } = useSelector((state) => state.authentication);
-  // const { isLoggedIn } = useSelector((state) => state.authentication);
+  // const { user: currentUser } = useSelector((state) => state.authentication);
+  const { isLoggedIn } = useSelector((state) => state.authentication);
   // const reloadRoute = () => {
   //   router.push({ pathname: '/empty' });
   //   router.replace({ pathname: '/route-to-refresh' });
@@ -25,12 +25,12 @@ const App = () => {
 
   return (
     // <BrowserRouter>
-    <HashRouter basename="http://localhost:3000">
+    <HashRouter basename="">
       <Navigation />
       <div className="container mt-3">
         <Switch>
           {
-            currentUser ? (
+            isLoggedIn ? (
               <Route exact path={['/', '/home']} component={Home} />
             ) : (
               <Route exact path={['/', '/about']} component={About} />
