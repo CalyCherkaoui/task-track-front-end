@@ -6,16 +6,6 @@ import {
   LOGOUT,
 } from '../actions/types';
 
-// const user = sessionStorage.getItem('user');
-
-// const initialState = user
-//   ? {
-//     isLoggedIn: true, user, error: {}, message: {},
-//   }
-//   : {
-//     isLoggedIn: false, user: null, error: {}, message: {},
-//   };
-
 const initialState = {
   user: {},
   id: null,
