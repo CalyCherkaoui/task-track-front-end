@@ -1,0 +1,9 @@
+.card_icon {
+  background-color: aqua;
+  width: 20px;
+  height: 20px;
+}
+
+.card_wrapper {
+  border: 1px solid blue;
+}
