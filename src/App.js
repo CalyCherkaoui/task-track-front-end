@@ -44,7 +44,7 @@ const App = () => {
           <Route exact path="/admin" component={Admin} />
           <Route exact path="/taskme" component={Admin} />
           <Route exact path="/timeline" component={Admin} />
-          <Route exact path="/routines" component={Admin} />
+          <Route exact path="/measureup" component={Admin} />
           <Route exact path="/routineform" component={Admin} />
           { /* Catch all route */ }
           <Route path="*" component={NotFound} status={404} />

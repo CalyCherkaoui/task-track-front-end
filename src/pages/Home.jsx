@@ -6,9 +6,6 @@ const Home = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
   if (!currentUser || !sessionStorage.getItem('token')) {
     return <Redirect to="/login" />;
-    // return (
-    //   history.push('/login')
-    // );
   }
 
   return (

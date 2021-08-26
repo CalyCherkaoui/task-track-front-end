@@ -8,7 +8,7 @@ import { IconContext } from 'react-icons';
 import { AiOutlineAreaChart } from 'react-icons/ai';
 import { CgExtensionAdd } from 'react-icons/cg';
 import { GoDiffAdded } from 'react-icons/go';
-import { GiCycle } from 'react-icons/gi';
+import { ImLab } from 'react-icons/im';
 import { Navbar, Nav } from 'react-bootstrap';
 import styles from '../styles/Navigation.module.css';
 // import history from '../helpers/history';
@@ -68,13 +68,13 @@ const FooterNav = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/routines" className="nav-link">
+                  <Link to="/measureup" className="nav-link">
                     <span className={styles.nav_logo_emph}>
                       <IconContext.Provider value={{ className: 'footer_icon' }}>
-                        <GiCycle />
+                        <ImLab />
                       </IconContext.Provider>
                     </span>
-                    reoutines
+                    Measure-up
                   </Link>
                 </li>
               </div>
