@@ -8,7 +8,7 @@ const routineCard = ({ name, icon }) => {
   return (
     <div className={styles.card_wrapper}>
       <div className={styles.card_icon}>
-        {icon}
+        <i className={icon} />
       </div>
       <div className={styles.card_title}>
         {name}

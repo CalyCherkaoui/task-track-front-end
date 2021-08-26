@@ -18,15 +18,9 @@ import NotFound from './pages/NotFound';
 // import history from './helpers/history';
 
 const App = () => {
-  // const { user: currentUser } = useSelector((state) => state.authentication);
   const { isLoggedIn } = useSelector((state) => state.authentication);
-  // const reloadRoute = () => {
-  //   router.push({ pathname: '/empty' });
-  //   router.replace({ pathname: '/route-to-refresh' });
-  // };
 
   return (
-    // <BrowserRouter>
     <HashRouter basename="">
       <Navigation />
       <div className="container mt-3">
@@ -58,7 +52,6 @@ const App = () => {
         )
       }
     </HashRouter>
-    // </BrowserRouter>
   );
 };
 

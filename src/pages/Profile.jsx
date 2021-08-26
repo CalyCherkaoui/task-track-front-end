@@ -10,20 +10,13 @@ import getProfile from '../actions/profile';
 const Profile = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
   const { id: userid } = useSelector((state) => state.authentication);
-  // const currentUser = sessionStorage.getItem('user');
   const dispatch = useDispatch();
   console.log(currentUser);
   console.log(userid);
-  // const history = useHistory();
 
   if (!currentUser || !sessionStorage.getItem('token')) {
     return <Redirect to="/login" />;
-    // return (
-    //   history.push('/login')
-    // );
   }
-
-  // const userid = parseInt(currentUser.data.id, 10);
 
   useEffect(() => {
     dispatch(getProfile(userid));
