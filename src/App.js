@@ -32,7 +32,7 @@ const App = () => {
               <Route exact path={['/', '/about']} component={About} />
             )
           }
-          <Route path="/login" onClick={() => console.log('login here')} component={Login} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/admin" component={Admin} />
