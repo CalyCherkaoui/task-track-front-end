@@ -8,6 +8,7 @@ import {
 const initialState = {
   routine: {},
   routines: {},
+  loading: true,
 };
 
 const routinesReducer = (state = initialState, action) => {
@@ -15,22 +16,26 @@ const routinesReducer = (state = initialState, action) => {
     case GET_ROUTINE_SUCCESS:
       return {
         ...state,
-        routine: action.payload,
+        routine: action.payload.data,
+        loading: false,
       };
     case GET_ROUTINE_FAIL:
       return {
         ...state,
         error: action.payload,
+        loading: false,
       };
     case GET_ROUTINES_SUCCESS:
       return {
         ...state,
-        routines: action.payload,
+        routines: action.payload.data,
+        loading: false,
       };
     case GET_ROUTINES_FAIL:
       return {
         ...state,
         error: action.payload,
+        loading: false,
       };
     default:
       return state;
