@@ -10,6 +10,8 @@ import {
   SET_TASK_FAIL,
   UPDATE_TASK_SUCCESS,
   UPDATE_TASK_FAIL,
+  GET_ROUTINES_TASK_SUCCESS,
+  GET_ROUTINES_TASK_FAIL,
 } from './types';
 
 export const getTask = (taskid) => async (dispatch) => {
@@ -117,6 +119,32 @@ export const updateTask = (
       payload: error,
     });
     console.log('task update errors');
+    console.log(error);
+  }
+};
+
+export const getAllroutines = () => async (dispatch) => {
+  axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
+  try {
+    const response = await axios.get(`${API_ROOT}allroutines`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    console.log('allroutines get success');
+    console.log(response.data);
+
+    dispatch({
+      type: GET_ROUTINES_TASK_SUCCESS,
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_ROUTINES_TASK_FAIL,
+      payload: error,
+    });
+    console.log('allroutines error');
     console.log(error);
   }
 };

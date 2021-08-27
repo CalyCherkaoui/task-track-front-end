@@ -5,12 +5,15 @@ import {
   SET_TASK_FAIL,
   UPDATE_TASK_SUCCESS,
   UPDATE_TASK_FAIL,
+  GET_ROUTINES_TASK_SUCCESS,
+  GET_ROUTINES_TASK_FAIL,
 } from '../actions/types';
 
 const initialState = {
   task: {},
   loading: true,
   message: '',
+  routineslist: [],
 };
 
 const taskReducer = (state = initialState, action) => {
@@ -46,6 +49,18 @@ const taskReducer = (state = initialState, action) => {
         loading: false,
       };
     case UPDATE_TASK_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
+    case GET_ROUTINES_TASK_SUCCESS:
+      return {
+        ...state,
+        routineslist: action.payload,
+        loading: false,
+      };
+    case GET_ROUTINES_TASK_FAIL:
       return {
         ...state,
         error: action.payload,
