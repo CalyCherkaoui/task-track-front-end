@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Redirect, Link } from 'react-router-dom';
 import { getTask } from '../actions/tasks';
 // import taskStyles from '../styles/Task.module.css';
 // import statsStyles from '../styles/Stats.module.css';
@@ -80,13 +80,21 @@ const TaskDetailPage = () => {
         {task.attributes.priority}
       </h1>
       <h2>
+        <Link to={`/routines/${parseInt(task.attributes['routine-id'], 10)}`}>
+          from &nbsp;
+          {task.attributes.routine}
+          &nbsp;
+          routine
+        </Link>
+      </h2>
+      <h3>
         Goal:
         {task.attributes.goal}
-      </h2>
-      <h2>
+      </h3>
+      <h3>
         total:
         {task.attributes['measurements-total']}
-      </h2>
+      </h3>
 
       <div>
         {displayMeasurements(measurements)}
