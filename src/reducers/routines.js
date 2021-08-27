@@ -6,7 +6,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  routine: {},
+  routine_tasks: [],
   routines: {},
   loading: true,
 };
@@ -16,7 +16,7 @@ const routinesReducer = (state = initialState, action) => {
     case GET_ROUTINE_SUCCESS:
       return {
         ...state,
-        routine: action.payload.data,
+        routine_tasks: action.payload.data,
         loading: false,
       };
     case GET_ROUTINE_FAIL:
