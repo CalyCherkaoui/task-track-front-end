@@ -8,16 +8,19 @@ import {
 } from './types';
 
 const getProfile = (userid) => async (dispatch) => {
-  // axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
-  const token = sessionStorage.getItem('token');
+  axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
+  // const token = sessionStorage.getItem('token');
 
   try {
     const response = await axios.get(`${API_ROOT}users/${userid}`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        // Authorization: token,
       },
     });
+
+    console.log('user profile');
+    console.log(response.data);
 
     dispatch({
       type: GET_PROFILE_SUCCESS,

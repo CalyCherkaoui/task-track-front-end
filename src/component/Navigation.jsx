@@ -1,32 +1,43 @@
-import React, { useEffect } from 'react';
+/* eslint-disable no-console */
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+// import { Link, useHistory, Router } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { BsCircleFill } from 'react-icons/bs';
 import { Navbar, Nav } from 'react-bootstrap';
-import { clearMessage } from '../actions/message';
 import styles from '../styles/Navigation.module.css';
-import history from '../helpers/history';
+// import history from '../helpers/history';
 import { logout } from '../actions/authentication';
 
 const Navigation = () => {
+  // const history = useHistory();
+
+  // if (sessionStorage.length === 0 || sessionStorage.token === 'undefined') {
+  //   return history.push('/logout');
+  // }
+
   const { user: currentUser } = useSelector((state) => state.authentication);
   const { isLoggedIn } = useSelector((state) => state.authentication);
   const dispatch = useDispatch();
-  const admin = currentUser ? currentUser.admin : false;
+  // const admin = currentUser ? currentUser.data.meta.admin : false;
+  const admin = false;
+  console.log(currentUser);
 
-  useEffect(() => {
-    history.listen((location) => {
-      dispatch(clearMessage(location));
-    });
-  }, [dispatch]);
+  // useEffect(() => {
+  //   history.listen((location) => {
+  //     dispatch(clearMessage(location));
+  //   });
+  // }, [dispatch]);
 
   const logOut = () => {
     dispatch(logout());
   };
 
   return (
-    // <Router history={history}>
+
+  // <Router history={history}>
+
     <Navbar className="justify-content-between">
       <Navbar.Brand href="/">
         Task & Track
@@ -50,11 +61,10 @@ const Navigation = () => {
             )
           }
         {
-            currentUser && (
+            isLoggedIn && (
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
                   Profile
-                  { currentUser.username}
                 </Link>
               </li>
             )
@@ -64,14 +74,13 @@ const Navigation = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/admin">
                 Admin-dashboard
-                { currentUser.username}
               </Link>
             </li>
             )
           }
 
         {
-            currentUser ? (
+            isLoggedIn ? (
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={logOut}>
                   LogOut
@@ -95,8 +104,8 @@ const Navigation = () => {
           }
       </Nav>
     </Navbar>
-  // </Router>
 
+  // </Router>
   );
 };
 

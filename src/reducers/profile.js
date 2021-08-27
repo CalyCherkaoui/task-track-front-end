@@ -3,7 +3,9 @@ import {
   GET_PROFILE_FAIL,
 } from '../actions/types';
 
-const initialState = {};
+const initialState = {
+  profile: {},
+};
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
