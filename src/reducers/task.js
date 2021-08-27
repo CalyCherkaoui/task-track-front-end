@@ -11,6 +11,7 @@ import {
 
 const initialState = {
   task: {},
+  measurements: [],
   loading: true,
   message: '',
   routineslist: [],
@@ -22,6 +23,7 @@ const taskReducer = (state = initialState, action) => {
       return {
         ...state,
         task: action.payload.data,
+        measurements: action.payload.included,
         loading: false,
       };
     case GET_TASK_FAIL:
