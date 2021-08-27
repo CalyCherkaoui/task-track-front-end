@@ -1,18 +1,14 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
-// import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
 import getProfile from '../actions/profile';
 
 const Profile = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
   const { id: userid } = useSelector((state) => state.authentication);
   const dispatch = useDispatch();
-  console.log(currentUser);
-  console.log(userid);
+  // console.log(currentUser);
+  // console.log(userid);
 
   if (!currentUser || !sessionStorage.getItem('token')) {
     return <Redirect to="/login" />;
