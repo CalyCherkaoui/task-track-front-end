@@ -15,6 +15,7 @@ import Profile from './pages/Profile';
 import About from './pages/About';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
+import RoutineDetailPage from './pages/RoutineDetailPage';
 // import history from './helpers/history';
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
           <Route exact path="/timeline" component={Admin} />
           <Route exact path="/measureup" component={Admin} />
           <Route exact path="/routineform" component={Admin} />
+          <Route exact path="/routines/:routineid" component={RoutineDetailPage} />
           { /* Catch all route */ }
           <Route path="*" component={NotFound} status={404} />
         </Switch>
