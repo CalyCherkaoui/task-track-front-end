@@ -17,6 +17,7 @@ import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
 import RoutineDetailPage from './pages/RoutineDetailPage';
 import TaskDetailPage from './pages/TaskDetailPage';
+import AddTask from './pages/AddTask';
 // import history from './helpers/history';
 
 const App = () => {
@@ -38,12 +39,12 @@ const App = () => {
           <Route exact path="/signup" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/admin" component={Admin} />
-          <Route exact path="/taskme" component={Admin} />
           <Route exact path="/timeline" component={Admin} />
           <Route exact path="/measureup" component={Admin} />
           <Route exact path="/routineform" component={Admin} />
           <Route exact path="/routines/:routineid" component={RoutineDetailPage} />
           <Route exact path="/tasks/:taskid" component={TaskDetailPage} />
+          <Route exact path="/addtask" component={AddTask} />
           { /* Catch all route */ }
           <Route path="*" component={NotFound} status={404} />
         </Switch>

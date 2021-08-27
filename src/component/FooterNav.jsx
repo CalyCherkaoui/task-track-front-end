@@ -28,19 +28,7 @@ const FooterNav = () => {
   // const admin = currentUser ? currentUser.data.meta.admin : false;
   console.log(isLoggedIn);
 
-  // useEffect(() => {
-  //   history.listen((location) => {
-  //     dispatch(clearMessage(location));
-  //   });
-  // }, [dispatch]);
-
-  // const logOut = () => {
-  //   dispatch(logout());
-  // };
-
   return (
-
-  // <Router history={history}>
 
     <Navbar className="justify-content-between">
       <Nav className={styles.footer_nav_wrapper}>
@@ -48,13 +36,13 @@ const FooterNav = () => {
             (isLoggedIn) ? (
               <div className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link to="/taskme" className="nav-link">
+                  <Link to="/addtask" className="nav-link">
                     <span className={styles.nav_logo_emph}>
                       <IconContext.Provider value={{ className: 'footer_icon' }}>
                         <AiOutlineAreaChart />
                       </IconContext.Provider>
                     </span>
-                    add task
+                    Track Task
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -64,7 +52,7 @@ const FooterNav = () => {
                         <GoDiffAdded />
                       </IconContext.Provider>
                     </span>
-                    timeline
+                    Timeline
                   </Link>
                 </li>
                 <li className="nav-item">
