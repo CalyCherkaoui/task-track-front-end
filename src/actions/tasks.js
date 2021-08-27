@@ -44,8 +44,8 @@ export const setTask = (
   name,
   priority,
   goal,
-  unity,
-  routine_id,
+  unit,
+  routine,
 ) => async (dispatch) => {
   axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
 
@@ -53,8 +53,8 @@ export const setTask = (
     name,
     priority,
     goal,
-    unity,
-    routine_id,
+    unit,
+    routine_id: routine,
   };
 
   const headers = {
