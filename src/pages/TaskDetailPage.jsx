@@ -13,6 +13,12 @@ const TaskDetailPage = () => {
     return <Redirect to="/login" />;
   }
 
+  const task = useSelector((state) => state.task.task);
+  const measurements = useSelector((state) => state.task.measurements);
+  console.log('task detail page');
+  console.log(task);
+  console.log(measurements);
+
   const { taskid } = useParams();
   const dispatch = useDispatch();
 
@@ -20,31 +26,14 @@ const TaskDetailPage = () => {
     dispatch(getTask(taskid));
   }, [dispatch]);
 
-  const task = useSelector((state) => state.task.task);
-  const measurements = useSelector((state) => state.task.measurements);
-  const loading = useSelector((state) => state.routines.loading);
-
-  console.log('task detail page');
-  console.log(task);
-  console.log(measurements);
+  const loading = useSelector((state) => state.task.loading);
 
   if (loading) {
     return <h3>Loading data ...</h3>;
   }
 
-  const displayMeasurements = (list) => {
-    if (list.length === 0) {
-      return (
-        <div>
-          <h3> No measurment taken yet! create one!</h3>
-          <h3>
-            <i className="fas fa-coffee fa-2x" />
-          </h3>
-        </div>
-      );
-    }
-
-    const listMeasurements = list.map(
+  const listMeasurements = (!measurements)
+    ? (<div>No data take a measurement</div>) : (measurements.map(
       (element) => (
         <li className={styles.card_wrapper} key={`key_${element.id}`}>
           <div className={styles.card_icon}>
@@ -61,43 +50,109 @@ const TaskDetailPage = () => {
           </div>
         </li>
       ),
-    );
+    ));
 
-    return (
-      <div>
-        <ul>
-          { listMeasurements }
-        </ul>
-      </div>
-    );
-  };
+  // const displayMeasurements = (list) => {
+  //   if (list.length === 0) {
+  //     return (
+  //       <div>
+  //         <h3> No measurment taken yet! create one!</h3>
+  //         <h3>
+  //           <i className="fas fa-coffee fa-2x" />
+  //         </h3>
+  //       </div>
+  //     );
+  //   }
+
+  //   const listMeasurements = list.map(
+  //     (element) => (
+  //       <li className={styles.card_wrapper} key={`key_${element.id}`}>
+  //         <div className={styles.card_icon}>
+  //           <i className="fas fa-coffee fa-2x" />
+  //         </div>
+  //         <div className={styles.card_title}>
+  //           {element.attributes['creation-date']}
+  //         </div>
+  //         <div className={styles.card_title}>
+  //           {element.attributes.quantity}
+  //         </div>
+  //         <div className={styles.card_title}>
+  //           {element.attributes.unity}
+  //         </div>
+  //       </li>
+  //     ),
+  //   );
+
+  //   return (
+  //     <div>
+  //       <ul>
+  //         { listMeasurements }
+  //       </ul>
+  //     </div>
+  //   );
+  // };
+
+  // const displayHeader = (data) => {
+  //   if (data) {
+  //     return (
+  //       <div>
+  //         <h1>{data.attributes.name}</h1>
+  //         <h1>
+  //           priority:
+  //           {data.attributes.priority}
+  //         </h1>
+  //         <h2>
+  //           <Link to={`/routines/${parseInt(data.attributes['routine-id'], 10)}`}>
+  //             from &nbsp;
+  //             {data.attributes.routine}
+  //             &nbsp;
+  //             routine
+  //           </Link>
+  //         </h2>
+  //         <h3>
+  //           Goal:
+  //           {data.attributes.goal}
+  //         </h3>
+  //         <h3>
+  //           total:
+  //           {data.attributes['measurements-total']}
+  //         </h3>
+  //       </div>
+  //     );
+  //   }
+
+  //   return <h3>Loading task data ...</h3>;
+  // };
 
   return (
     <div>
-      <h1>{task.attributes.name}</h1>
-      <h1>
-        priority:
-        {task.attributes.priority}
-      </h1>
-      <h2>
-        <Link to={`/routines/${parseInt(task.attributes['routine-id'], 10)}`}>
-          from &nbsp;
-          {task.attributes.routine}
-          &nbsp;
-          routine
-        </Link>
-      </h2>
-      <h3>
-        Goal:
-        {task.attributes.goal}
-      </h3>
-      <h3>
-        total:
-        {task.attributes['measurements-total']}
-      </h3>
-
       <div>
-        {displayMeasurements(measurements)}
+        <div>
+          <h1>{task.attributes.name}</h1>
+          <h1>
+            priority:
+            {task.attributes.priority}
+          </h1>
+          <h2>
+            <Link to={`/routines/${parseInt(task.attributes['routine-id'], 10)}`}>
+              from &nbsp;
+              {task.attributes.routine}
+              &nbsp;
+              routine
+            </Link>
+          </h2>
+          <h3>
+            Goal:
+            {task.attributes.goal}
+          </h3>
+          <h3>
+            total:
+            {task.attributes['measurements-total']}
+          </h3>
+        </div>
+      </div>
+      <div>
+        {listMeasurements}
       </div>
     </div>
   );
