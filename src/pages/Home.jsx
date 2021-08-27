@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { AiOutlineAreaChart } from 'react-icons/ai';
 import homestyles from '../styles/Home.module.css';
@@ -51,15 +50,17 @@ const Home = () => {
     const listRoutines = list.map(
       (element) => (
         <li className={styles.card_wrapper} key={`key_${element.id}`}>
-          <div className={styles.card_icon}>
-            <i className="fas fa-coffee fa-2x" />
-          </div>
-          <div className={styles.card_title}>
-            {element.attributes.name}
-          </div>
-          <div className={styles.card_title}>
-            {element.attributes.priority}
-          </div>
+          <Link to={`/routines/${parseInt(element.id, 10)}`}>
+            <div className={styles.card_icon}>
+              <i className="fas fa-coffee fa-2x" />
+            </div>
+            <div className={styles.card_title}>
+              {element.attributes.name}
+            </div>
+            <div className={styles.card_title}>
+              {element.attributes.priority}
+            </div>
+          </Link>
         </li>
       ),
     );
