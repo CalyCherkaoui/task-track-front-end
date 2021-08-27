@@ -45,7 +45,7 @@ const RoutineDetailPage = () => {
     const listTasks = list.map(
       (element) => (
         <li className={styles.card_wrapper} key={`key_${element.id}`}>
-          <Link to={`/tasks/${parseInt(element.attributes.id, 10)}`}>
+          <Link to={`/tasks/${parseInt(element.id, 10)}`}>
             <div className={styles.card_icon}>
               <i className="fas fa-coffee fa-2x" />
             </div>
