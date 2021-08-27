@@ -23,12 +23,14 @@ const taskReducer = (state = initialState, action) => {
       return {
         ...state,
         task: action.payload.data,
+        message: '',
         measurements: action.payload.included,
         loading: false,
       };
     case GET_TASK_FAIL:
       return {
         ...state,
+        message: '',
         error: action.payload,
         loading: false,
       };
@@ -41,6 +43,7 @@ const taskReducer = (state = initialState, action) => {
     case SET_TASK_FAIL:
       return {
         ...state,
+        message: '',
         error: action.payload,
         loading: false,
       };
@@ -53,18 +56,21 @@ const taskReducer = (state = initialState, action) => {
     case UPDATE_TASK_FAIL:
       return {
         ...state,
+        message: '',
         error: action.payload,
         loading: false,
       };
     case GET_ROUTINES_TASK_SUCCESS:
       return {
         ...state,
+        message: '',
         routineslist: action.payload,
         loading: false,
       };
     case GET_ROUTINES_TASK_FAIL:
       return {
         ...state,
+        message: '',
         error: action.payload,
         loading: false,
       };
