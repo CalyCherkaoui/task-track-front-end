@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { login } from '../actions/authentication';
-// import { Redirect } from 'react-router-dom';
+import { getAllroutines } from '../actions/tasks';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => state.authentication);
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -14,6 +16,11 @@ const Login = () => {
     e.preventDefault();
     dispatch(login(username, email, password));
   };
+
+  if (isLoggedIn) {
+    dispatch(getAllroutines());
+    return <Redirect to="/home" />;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
