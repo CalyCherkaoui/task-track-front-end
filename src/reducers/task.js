@@ -10,11 +10,13 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  task: {},
+  task: null,
   measurements: [],
   loading: true,
   message: '',
+  error: null,
   routineslist: [],
+  success: false,
 };
 
 const taskReducer = (state = initialState, action) => {
@@ -26,19 +28,24 @@ const taskReducer = (state = initialState, action) => {
         message: '',
         measurements: action.payload.included,
         loading: false,
+        success: true,
+        error: null,
       };
     case GET_TASK_FAIL:
       return {
         ...state,
-        message: '',
+        message: null,
         error: action.payload,
         loading: false,
+        success: false,
       };
     case SET_TASK_SUCCESS:
       return {
         ...state,
         message: 'Your task was successfully added!',
         loading: false,
+        success: true,
+        error: null,
       };
     case SET_TASK_FAIL:
       return {
@@ -46,12 +53,15 @@ const taskReducer = (state = initialState, action) => {
         message: '',
         error: action.payload,
         loading: false,
+        success: false,
       };
     case UPDATE_TASK_SUCCESS:
       return {
         ...state,
         message: 'Your task was successfully updated!',
         loading: false,
+        success: true,
+        error: null,
       };
     case UPDATE_TASK_FAIL:
       return {
@@ -59,6 +69,7 @@ const taskReducer = (state = initialState, action) => {
         message: '',
         error: action.payload,
         loading: false,
+        success: false,
       };
     case GET_ROUTINES_TASK_SUCCESS:
       return {

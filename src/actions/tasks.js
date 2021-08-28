@@ -135,6 +135,8 @@ export const getAllroutines = () => async (dispatch) => {
     console.log('allroutines get success');
     console.log(response.data);
 
+    sessionStorage.setItem('routineslist', response.data);
+
     dispatch({
       type: GET_ROUTINES_TASK_SUCCESS,
       payload: response.data,
