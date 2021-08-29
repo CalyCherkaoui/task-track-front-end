@@ -4,6 +4,7 @@ import message from './message';
 import profile from './profile';
 import routines from './routines';
 import task from './task';
+import measurement from './measurement';
 
 const rootReducer = combineReducers({
   authentication,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   profile,
   routines,
   task,
+  measurement,
 });
 
 export default rootReducer;
