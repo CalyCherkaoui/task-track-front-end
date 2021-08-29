@@ -12,6 +12,7 @@ import {
   UPDATE_TASK_FAIL,
   GET_ROUTINES_TASK_SUCCESS,
   GET_ROUTINES_TASK_FAIL,
+  CLEAR_EDIT_TASK_STATE,
 } from './types';
 
 export const getTask = (taskid) => async (dispatch) => {
@@ -45,7 +46,7 @@ export const setTask = (
   priority,
   goal,
   unit,
-  routine,
+  routine_id,
 ) => async (dispatch) => {
   axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
 
@@ -54,7 +55,7 @@ export const setTask = (
     priority,
     goal,
     unit,
-    routine_id: routine,
+    routine_id,
   };
 
   const headers = {
@@ -149,4 +150,10 @@ export const getAllroutines = () => async (dispatch) => {
     console.log('allroutines error');
     console.log(error);
   }
+};
+
+export const clearEditTaskState = () => (dispatch) => {
+  dispatch({
+    type: CLEAR_EDIT_TASK_STATE,
+  });
 };
