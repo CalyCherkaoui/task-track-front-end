@@ -7,16 +7,17 @@ import {
   UPDATE_TASK_FAIL,
   GET_ROUTINES_TASK_SUCCESS,
   GET_ROUTINES_TASK_FAIL,
+  CLEAR_EDIT_TASK_STATE,
 } from '../actions/types';
 
 const initialState = {
   task: null,
-  measurements: [],
+  measurements: null,
   loading: true,
   message: '',
   error: null,
-  routineslist: [],
-  success: false,
+  routineslist: null,
+  edit_success: false,
 };
 
 const taskReducer = (state = initialState, action) => {
@@ -28,7 +29,7 @@ const taskReducer = (state = initialState, action) => {
         message: '',
         measurements: action.payload.included,
         loading: false,
-        success: true,
+        edit_success: false,
         error: null,
       };
     case GET_TASK_FAIL:
@@ -37,14 +38,14 @@ const taskReducer = (state = initialState, action) => {
         message: null,
         error: action.payload,
         loading: false,
-        success: false,
+        edit_success: false,
       };
     case SET_TASK_SUCCESS:
       return {
         ...state,
         message: 'Your task was successfully added!',
         loading: false,
-        success: true,
+        edit_success: true,
         error: null,
       };
     case SET_TASK_FAIL:
@@ -53,14 +54,14 @@ const taskReducer = (state = initialState, action) => {
         message: '',
         error: action.payload,
         loading: false,
-        success: false,
+        edit_success: false,
       };
     case UPDATE_TASK_SUCCESS:
       return {
         ...state,
         message: 'Your task was successfully updated!',
         loading: false,
-        success: true,
+        edit_success: true,
         error: null,
       };
     case UPDATE_TASK_FAIL:
@@ -69,7 +70,7 @@ const taskReducer = (state = initialState, action) => {
         message: '',
         error: action.payload,
         loading: false,
-        success: false,
+        edit_success: false,
       };
     case GET_ROUTINES_TASK_SUCCESS:
       return {
@@ -84,6 +85,16 @@ const taskReducer = (state = initialState, action) => {
         message: '',
         error: action.payload,
         loading: false,
+      };
+    case CLEAR_EDIT_TASK_STATE:
+      return {
+        ...state,
+        task: null,
+        message: null,
+        measurements: null,
+        loading: false,
+        edit_success: false,
+        error: null,
       };
     default:
       return state;
