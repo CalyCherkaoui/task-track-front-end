@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 
 const AlertBox = ({ alertprops }) => {
   const [show, setShow] = useState(true);
 
-  if (show) {
-    return (
-      <Alert variant={alertprops.variant} onClose={() => setShow(false)} dismissible>
+  return (
+    <>
+      <Alert show={show} variant={alertprops.variant}>
         <Alert.Heading>{alertprops.message}</Alert.Heading>
+        <hr />
+        <div className="d-flex justify-content-end">
+          <Button onClick={() => setShow(false)} variant={alertprops.variant}>
+            <i
+              className="fas fa-times"
+              style={{ fontSize: '20px' }}
+            />
+          </Button>
+        </div>
       </Alert>
-    );
-  }
-  return <div />;
+    </>
+  );
 };
 
 AlertBox.propTypes = {
