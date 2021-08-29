@@ -55,7 +55,7 @@ export const setMeasurement = (
   };
 
   try {
-    const response = await axios.post(`${API_ROOT}tasks`, { mesurement: measurementData }, { headers });
+    const response = await axios.post(`${API_ROOT}mesurements`, { mesurement: measurementData }, { headers });
 
     console.log('measurement create');
     console.log(response.data);
