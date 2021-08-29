@@ -3,8 +3,10 @@
 // import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, Link, useHistory } from 'react-router-dom';
-import { setTask } from '../actions/tasks';
+// import { Redirect, Link, useHistory } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
+import { setTask, clearEditTaskState } from '../actions/tasks';
 import AlertBox from '../component/AlertBox';
 
 const AddTask = () => {
@@ -18,66 +20,91 @@ const AddTask = () => {
   const [priority, setPriority] = useState();
   const [goal, setGoal] = useState();
   const [unit, setUnit] = useState();
-  const [routine, setRoutine] = useState();
-  const history = useHistory();
+  const [routine_id, setRoutine_id] = useState();
+  // const history = useHistory();
   const routinesList = useSelector((state) => state.task.routineslist);
   const loading = useSelector((state) => state.task.loading);
-  const success = useSelector((state) => state.task.success);
+  const edit_success = useSelector((state) => state.task.edit_success);
   const error = useSelector((state) => state.task.error);
-  const task = useSelector((state) => state.task.task);
-  const message = useSelector((state) => state.task.message);
+  // const task = useSelector((state) => state.task.task);
+  // const message = useSelector((state) => state.task.message);
 
   if (loading) {
-    return <h3>Loading data ...</h3>;
+    return (
+      <Spinner animation="border" role="status" variant="info">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setTask(name, priority, goal, unit, routine));
+    dispatch(setTask(name, priority, goal, unit, routine_id));
   };
 
   useEffect(() => {
-    if (success === true) {
+    if (edit_success === true) {
       // document.getElementById('add_task_success_notif').style.display = 'block';
-      document.getElementById('add_task_success_notif').append(<AlertBox
-        alertprops={{
-          variant: 'success',
-          message,
-        }}
-      />);
-    }
-
-    if (task) {
+      // const alertBox = document.getElementById('add_task_success_notif');
+      // alertBox.append(<AlertBox
+      //   alertprops={{
+      //     variant: 'success',
+      //     message,
+      //   }}
+      // />);
+      // alertBox.style.display = 'block';
+      document.getElementById('add_task_success_notif').style.display = 'block';
+      dispatch(clearEditTaskState());
       setTimeout(() => {
-        history.push(`/tasks/${parseInt(task.id, 10)}`);
+        document.getElementById('add_task_success_notif').style.display = 'none';
       }, 5000);
     }
 
+    // if (task) {
+    //   setTimeout(() => {
+    //     history.push(`/tasks/${parseInt(task.id, 10)}`);
+    //   }, 5000);
+    // }
+
     if (error) {
-      // document.getElementById('add_task_success_notif').style.display = 'block';
-      document.getElementById('add_task_error_notif').append(<AlertBox
-        alertprops={{
-          variant: 'danger',
-          message: 'Oops! Something went wrong! Try again!',
-        }}
-      />);
+      document.getElementById('add_task_errors_notif').style.display = 'block';
+      // // const errorBox = (
+      // //   <AlertBox
+      // //     alertprops={{
+      // //       variant: 'danger',
+      // //       message: 'Oops! Something went wrong! Try again!',
+      // //     }}
+      // //   />
+      // // );
+      // const errorBoxWrapper = document.getElementById('add_task_errors_notif');
+      // // errorBoxWrapper.append(errorBox);
+      // errorBoxWrapper.style.display = 'block';
+      dispatch(clearEditTaskState());
+      setTimeout(() => {
+        document.getElementById('add_task_errors_notif').style.display = 'none';
+      }, 5000);
     }
-  }, []);
+  });
 
   const selectRoutine = (routinesList)
     ? (
       <select
         name="routine"
         id="routine_id"
-        onChange={(e) => setRoutine(e.target.value)}
+        onChange={(e) => setRoutine_id(e.target.value)}
+        // value={parseInt(routinesList[0].id, 10)}
       >
+        <option
+          key="key_"
+          // value={parseInt(routinesList[0].id, 10)}
+        >
+          Select a Routine for your task!
+        </option>
         {routinesList.map((elem) => (
           <option
             key={`key_${parseInt(elem.id, 10)}`}
             value={parseInt(elem.id, 10)}
           >
-            <i className="fas fa-coffee fa-2x" />
-              &nbsp;
             {elem.name}
           </option>
         ))}
@@ -97,15 +124,26 @@ const AddTask = () => {
       </h1>
       <div
         id="add_task_success_notif"
-        // style={{ display: 'none', color: 'green' }}
+        style={{ display: 'none', color: 'green' }}
       >
-        {/* successfully added */}
+        <AlertBox
+          alertprops={{
+            variant: 'success',
+            message: 'Task Successfully Added!',
+          }}
+        />
+
       </div>
       <div
         id="add_task_errors_notif"
-        // style={{ display: 'none', color: 'red' }}
+        style={{ display: 'none', color: 'red' }}
       >
-        {/* Something went wrong */}
+        <AlertBox
+          alertprops={{
+            variant: 'danger',
+            message: 'Oops! Something went wrong! Try again!',
+          }}
+        />
       </div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="task_name_input">
