@@ -18,6 +18,7 @@ import NotFound from './pages/NotFound';
 import RoutineDetailPage from './pages/RoutineDetailPage';
 import TaskDetailPage from './pages/TaskDetailPage';
 import AddTask from './pages/AddTask';
+import AddMeasurement from './pages/AddMeasurement';
 // import history from './helpers/history';
 
 const App = () => {
@@ -45,7 +46,7 @@ const App = () => {
           <Route exact path="/routines/:routineid" component={RoutineDetailPage} />
           <Route exact path="/tasks/:taskid" component={TaskDetailPage} />
           <Route exact path="/addtask" component={AddTask} />
-          <Route exact path="/addmeasurement" component={AddTask} />
+          <Route exact path="/addmeasurement" component={AddMeasurement} />
           { /* Catch all route */ }
           <Route path="*" component={NotFound} status={404} />
         </Switch>
