@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 import { setMeasurement, clearEditMeasurementState } from '../actions/measurements';
-import AlertBox from '../component/AlertBox';
+// import AlertBox from '../component/AlertBox';
 
 const AddMeasurement = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -37,18 +37,18 @@ const AddMeasurement = () => {
 
   useEffect(() => {
     if (edit_success === true) {
-      document.getElementById('add_measurement_success_notif').style.display = 'block';
+      document.getElementById('success_notif').style.display = 'block';
       dispatch(clearEditMeasurementState());
       setTimeout(() => {
-        document.getElementById('add_measurement_success_notif').style.display = 'none';
+        document.getElementById('success_notif').style.display = 'none';
       }, 6000);
     }
 
     if (error) {
-      document.getElementById('add_measurement_errors_notif').style.display = 'block';
+      document.getElementById('errors_notif').style.display = 'block';
       dispatch(clearEditMeasurementState());
       setTimeout(() => {
-        document.getElementById('add_measurement_errors_notif').style.display = 'none';
+        document.getElementById('errors_notif').style.display = 'none';
       }, 6000);
     }
   });
@@ -87,7 +87,7 @@ const AddMeasurement = () => {
       <h1>
         Take a measurement!
       </h1>
-      <div
+      {/* <div
         id="add_measurement_success_notif"
         style={{ display: 'none', color: 'green' }}
       >
@@ -109,7 +109,7 @@ const AddMeasurement = () => {
             message: 'Oops! Something went wrong! Try again!',
           }}
         />
-      </div>
+      </div> */}
       <form onSubmit={handleSubmit}>
         <label htmlFor="measurement_quantity_input">
           Quantity:

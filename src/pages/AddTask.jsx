@@ -7,7 +7,7 @@ import { Redirect, Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 import { setTask, clearEditTaskState } from '../actions/tasks';
 import { getAllTasks } from '../actions/measurements';
-import AlertBox from '../component/AlertBox';
+// import AlertBox from '../component/AlertBox';
 
 const AddTask = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -44,18 +44,18 @@ const AddTask = () => {
 
   useEffect(() => {
     if (edit_success === true) {
-      document.getElementById('add_task_success_notif').style.display = 'block';
+      document.getElementById('success_notif').style.display = 'block';
       dispatch(clearEditTaskState());
       setTimeout(() => {
-        document.getElementById('add_task_success_notif').style.display = 'none';
+        document.getElementById('success_notif').style.display = 'none';
       }, 5000);
     }
 
     if (error) {
-      document.getElementById('add_task_errors_notif').style.display = 'block';
+      document.getElementById('errors_notif').style.display = 'block';
       dispatch(clearEditTaskState());
       setTimeout(() => {
-        document.getElementById('add_task_errors_notif').style.display = 'none';
+        document.getElementById('errors_notif').style.display = 'none';
       }, 5000);
     }
   });
@@ -96,7 +96,7 @@ const AddTask = () => {
       <h1>
         Add a Task to track!
       </h1>
-      <div
+      {/* <div
         id="add_task_success_notif"
         style={{ display: 'none', color: 'green' }}
       >
@@ -118,7 +118,7 @@ const AddTask = () => {
             message: 'Oops! Something went wrong! Try again!',
           }}
         />
-      </div>
+      </div> */}
       <form onSubmit={handleSubmit}>
         <label htmlFor="task_name_input">
           Name:

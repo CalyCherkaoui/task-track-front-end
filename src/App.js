@@ -18,6 +18,7 @@ import RoutineDetailPage from './pages/RoutineDetailPage';
 import TaskDetailPage from './pages/TaskDetailPage';
 import AddTask from './pages/AddTask';
 import AddMeasurement from './pages/AddMeasurement';
+import AlertNotifications from './component/AlertNotifications';
 
 const App = () => {
   const { isLoggedIn } = useSelector((state) => state.authentication);
@@ -25,6 +26,7 @@ const App = () => {
   return (
     <HashRouter basename="">
       <Navigation />
+      <AlertNotifications />
       <div className="container mt-3">
         <Switch>
           {
