@@ -31,7 +31,7 @@ const FooterNav = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/timeline" className="nav-link">
+                  <Link to="/myroutines" className="nav-link">
                     <span className={styles.nav_logo_emph}>
                       <IconContext.Provider value={{ className: 'footer_icon' }}>
                         <GoDiffAdded />
