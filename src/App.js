@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable react/no-this-in-sfc */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Switch, Route, HashRouter } from 'react-router-dom';
@@ -19,7 +18,6 @@ import RoutineDetailPage from './pages/RoutineDetailPage';
 import TaskDetailPage from './pages/TaskDetailPage';
 import AddTask from './pages/AddTask';
 import AddMeasurement from './pages/AddMeasurement';
-// import history from './helpers/history';
 
 const App = () => {
   const { isLoggedIn } = useSelector((state) => state.authentication);
@@ -41,13 +39,12 @@ const App = () => {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/admin" component={Admin} />
           <Route exact path="/timeline" component={Admin} />
-          <Route exact path="/measureup" component={Admin} />
+          <Route exact path="/measureup" component={AddMeasurement} />
           <Route exact path="/routineform" component={Admin} />
           <Route exact path="/routines/:routineid" component={RoutineDetailPage} />
           <Route exact path="/tasks/:taskid" component={TaskDetailPage} />
           <Route exact path="/addtask" component={AddTask} />
-          <Route exact path="/addmeasurement" component={AddMeasurement} />
-          { /* Catch all route */ }
+          { /* Catch all routes */ }
           <Route path="*" component={NotFound} status={404} />
         </Switch>
       </div>
