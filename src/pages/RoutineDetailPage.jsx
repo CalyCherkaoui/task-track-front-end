@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Redirect, Link } from 'react-router-dom';
 import { getRoutine } from '../actions/routines';
 import styles from '../styles/Card.module.css';
 
@@ -45,27 +45,29 @@ const RoutineDetailPage = () => {
     const listTasks = list.map(
       (element) => (
         <li className={styles.card_wrapper} key={`key_${element.id}`}>
-          <div className={styles.card_icon}>
-            <i className="fas fa-coffee fa-2x" />
-          </div>
-          <div className={styles.card_title}>
-            {element.attributes.name}
-          </div>
-          <div className={styles.card_title}>
-            {element.attributes.priority}
-          </div>
-          <div className={styles.card_title}>
-            {element.attributes.unit}
-          </div>
-          <div className={styles.card_title}>
-            {element.attributes['measurements-total']}
-          </div>
-          <div className={styles.card_title}>
-            {element.attributes['measurements-count']}
-          </div>
-          <div className={styles.card_title}>
-            {element.attributes.goal}
-          </div>
+          <Link to={`/tasks/${parseInt(element.id, 10)}`}>
+            <div className={styles.card_icon}>
+              <i className="fas fa-coffee fa-2x" />
+            </div>
+            <div className={styles.card_title}>
+              {element.attributes.name}
+            </div>
+            <div className={styles.card_title}>
+              {element.attributes.priority}
+            </div>
+            <div className={styles.card_title}>
+              {element.attributes.unit}
+            </div>
+            <div className={styles.card_title}>
+              {element.attributes['measurements-total']}
+            </div>
+            <div className={styles.card_title}>
+              {element.attributes['measurements-count']}
+            </div>
+            <div className={styles.card_title}>
+              {element.attributes.goal}
+            </div>
+          </Link>
         </li>
       ),
     );
