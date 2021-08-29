@@ -50,7 +50,6 @@ const measurementReducer = (state = initialState, action) => {
     case GET_TASKS_MEASUREMENT_SUCCESS:
       return {
         ...state,
-        message: '',
         taskslist: action.payload,
         loading: false,
       };
