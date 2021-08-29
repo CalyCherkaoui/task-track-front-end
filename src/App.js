@@ -45,6 +45,7 @@ const App = () => {
           <Route exact path="/routines/:routineid" component={RoutineDetailPage} />
           <Route exact path="/tasks/:taskid" component={TaskDetailPage} />
           <Route exact path="/addtask" component={AddTask} />
+          <Route exact path="/addmeasurement" component={AddTask} />
           { /* Catch all route */ }
           <Route path="*" component={NotFound} status={404} />
         </Switch>
