@@ -11,7 +11,8 @@ import RoutineCard from '../component/RoutineCard';
 
 const Home = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
-  if (!currentUser || !sessionStorage.getItem('token')) {
+  const { isLoggedIn } = useSelector((state) => state.authentication);
+  if (!currentUser || !sessionStorage.getItem('token') || !isLoggedIn) {
     return <Redirect to="/login" />;
   }
 

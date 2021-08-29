@@ -9,7 +9,8 @@ import AlertBox from '../component/AlertBox';
 
 const AddMeasurement = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
-  if (!currentUser || !sessionStorage.getItem('token')) {
+  const { isLoggedIn } = useSelector((state) => state.authentication);
+  if (!currentUser || !sessionStorage.getItem('token') || !isLoggedIn) {
     return <Redirect to="/login" />;
   }
 
@@ -40,7 +41,7 @@ const AddMeasurement = () => {
       dispatch(clearEditMeasurementState());
       setTimeout(() => {
         document.getElementById('add_measurement_success_notif').style.display = 'none';
-      }, 5000);
+      }, 6000);
     }
 
     if (error) {
@@ -48,7 +49,7 @@ const AddMeasurement = () => {
       dispatch(clearEditMeasurementState());
       setTimeout(() => {
         document.getElementById('add_measurement_errors_notif').style.display = 'none';
-      }, 5000);
+      }, 6000);
     }
   });
 
@@ -75,8 +76,8 @@ const AddMeasurement = () => {
       </select>
     ) : (
       <select>
-        <option value={1}>
-          Random
+        <option>
+          No Tasks available yet! Create one!
         </option>
       </select>
     );
@@ -84,7 +85,7 @@ const AddMeasurement = () => {
   return (
     <div>
       <h1>
-        Add a Task to track!
+        Take a measurement!
       </h1>
       <div
         id="add_measurement_success_notif"

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../actions/authentication';
 import { getAllroutines } from '../actions/tasks';
+import { getAllTasks } from '../actions/measurements';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Login = () => {
 
   if (isLoggedIn) {
     dispatch(getAllroutines());
+    dispatch(getAllTasks());
     return <Redirect to="/home" />;
   }
 
