@@ -102,7 +102,7 @@ export const getAllTasks = () => async (dispatch) => {
   }
 };
 
-export const clearEditTaskState = () => (dispatch) => {
+export const clearEditMeasurementState = () => (dispatch) => {
   dispatch({
     type: CLEAR_EDIT_MEASUREMENT_STATE,
   });
