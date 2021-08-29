@@ -1,19 +1,26 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { register } from '../actions/authentication';
-// import { Redirect } from 'react-router-dom';
+import { getAllroutines } from '../actions/tasks';
 
 const Register = () => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const { isLoggedIn } = useSelector((state) => state.authentication);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(register(username, email, password));
   };
+
+  if (isLoggedIn) {
+    dispatch(getAllroutines());
+    return <Redirect to="/home" />;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
