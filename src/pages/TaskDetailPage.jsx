@@ -3,8 +3,10 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Redirect, Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
+import { IconContext } from 'react-icons';
+import { IoEllipsisVerticalOutline } from 'react-icons/io';
+import Moment from 'moment';
 import { getTask } from '../actions/tasks';
-import AlertBox from '../component/AlertBox';
 // import taskStyles from '../styles/Task.module.css';
 // import statsStyles from '../styles/Stats.module.css';
 import styles from '../styles/Card.module.css';
@@ -27,20 +29,6 @@ const TaskDetailPage = () => {
   const { taskid } = useParams();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getTask(taskid));
-
-    if (error) {
-      // document.getElementById('add_task_success_notif').style.display = 'block';
-      document.getElementById('add_task_error_notif').append(<AlertBox
-        alertprops={{
-          variant: 'danger',
-          message: 'Oops! Something went wrong! Try again!',
-        }}
-      />);
-    }
-  }, [dispatch]);
-
   if (loading) {
     return (
       <Spinner animation="border" role="status" variant="info">
@@ -49,66 +37,48 @@ const TaskDetailPage = () => {
     );
   }
 
+  useEffect(() => {
+    dispatch(getTask(taskid));
+
+    if (error) {
+      document.getElementById('errors_notif').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('errors_notif').style.display = 'none';
+      }, 5000);
+    }
+  }, [dispatch]);
+
   const listMeasurements = (measurements)
     ? (measurements.map(
       (element) => (
         <li className={styles.card_wrapper} key={`key_${element.id}`}>
-          <div className={styles.card_icon}>
-            <i className="fas fa-coffee fa-2x" />
+          <div>
+            &#xf26e;
+            <i className="fas fa-bullseye" />
+            <i className="fas fa-circle" />
+            <div className={styles.card_title}>
+              {element.attributes['creation-date']}
+              {Moment(element.attributes['creation-date']).format('MMM DD HH:mm')}
+            </div>
           </div>
-          <div className={styles.card_title}>
-            {element.attributes['creation-date']}
-          </div>
-          <div className={styles.card_title}>
-            {element.attributes.quantity}
-          </div>
-          <div className={styles.card_title}>
-            {element.attributes.unity}
+          <div>
+            <IconContext.Provider value={{ className: 'measur_icon' }}>
+              <IoEllipsisVerticalOutline />
+            </IconContext.Provider>
+            <div className={styles.card_title}>
+              {element.attributes.quantity}
+              {element.attributes.unity}
+            </div>
           </div>
         </li>
       ),
     ))
-    : (<div>No measurement added yet ! create one!</div>);
-
-  // const displayMeasurements = (list) => {
-  //   if (list.length === 0) {
-  //     return (
-  //       <div>
-  //         <h3> No measurment taken yet! create one!</h3>
-  //         <h3>
-  //           <i className="fas fa-coffee fa-2x" />
-  //         </h3>
-  //       </div>
-  //     );
-  //   }
-
-  //   const listMeasurements = list.map(
-  //     (element) => (
-  //       <li className={styles.card_wrapper} key={`key_${element.id}`}>
-  //         <div className={styles.card_icon}>
-  //           <i className="fas fa-coffee fa-2x" />
-  //         </div>
-  //         <div className={styles.card_title}>
-  //           {element.attributes['creation-date']}
-  //         </div>
-  //         <div className={styles.card_title}>
-  //           {element.attributes.quantity}
-  //         </div>
-  //         <div className={styles.card_title}>
-  //           {element.attributes.unity}
-  //         </div>
-  //       </li>
-  //     ),
-  //   );
-
-  //   return (
-  //     <div>
-  //       <ul>
-  //         { listMeasurements }
-  //       </ul>
-  //     </div>
-  //   );
-  // };
+    : (
+      <Link to="/addtask" className="nav-link">
+        No measurement added yet ! create one!
+        <i className="fas fa-plus" />
+      </Link>
+    );
 
   // const displayHeader = (data) => {
   //   if (data) {
@@ -144,12 +114,6 @@ const TaskDetailPage = () => {
 
   return (
     <div>
-      <div
-        id="add_task_errors_notif"
-        // style={{ display: 'none', color: 'red' }}
-      >
-        {/* Something went wrong */}
-      </div>
       <div>
         {
           (task) ? (
