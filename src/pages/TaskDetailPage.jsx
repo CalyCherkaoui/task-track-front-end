@@ -2,7 +2,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Redirect, Link } from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
 import { getTask } from '../actions/tasks';
+import AlertBox from '../component/AlertBox';
 // import taskStyles from '../styles/Task.module.css';
 // import statsStyles from '../styles/Stats.module.css';
 import styles from '../styles/Card.module.css';
@@ -15,25 +17,39 @@ const TaskDetailPage = () => {
 
   const task = useSelector((state) => state.task.task);
   const measurements = useSelector((state) => state.task.measurements);
-  console.log('task detail page');
-  console.log(task);
-  console.log(measurements);
+  const loading = useSelector((state) => state.task.loading);
+  const error = useSelector((state) => state.task.error);
+  // console.log('task detail page');
+  // console.log(task);
+  // console.log(measurements);
 
   const { taskid } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTask(taskid));
+
+    if (error) {
+      // document.getElementById('add_task_success_notif').style.display = 'block';
+      document.getElementById('add_task_error_notif').append(<AlertBox
+        alertprops={{
+          variant: 'danger',
+          message: 'Oops! Something went wrong! Try again!',
+        }}
+      />);
+    }
   }, [dispatch]);
 
-  const loading = useSelector((state) => state.task.loading);
-
   if (loading) {
-    return <h3>Loading data ...</h3>;
+    return (
+      <Spinner animation="border" role="status" variant="info">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
 
-  const listMeasurements = (!measurements)
-    ? (<div>No data take a measurement</div>) : (measurements.map(
+  const listMeasurements = (measurements)
+    ? (measurements.map(
       (element) => (
         <li className={styles.card_wrapper} key={`key_${element.id}`}>
           <div className={styles.card_icon}>
@@ -50,7 +66,8 @@ const TaskDetailPage = () => {
           </div>
         </li>
       ),
-    ));
+    ))
+    : (<div>No measurement added yet ! create one!</div>);
 
   // const displayMeasurements = (list) => {
   //   if (list.length === 0) {
@@ -126,30 +143,42 @@ const TaskDetailPage = () => {
 
   return (
     <div>
+      <div
+        id="add_task_errors_notif"
+        // style={{ display: 'none', color: 'red' }}
+      >
+        {/* Something went wrong */}
+      </div>
       <div>
-        <div>
-          <h1>{task.attributes.name}</h1>
-          <h1>
-            priority:
-            {task.attributes.priority}
-          </h1>
-          <h2>
-            <Link to={`/routines/${parseInt(task.attributes['routine-id'], 10)}`}>
-              from &nbsp;
-              {task.attributes.routine}
-              &nbsp;
-              routine
-            </Link>
-          </h2>
-          <h3>
-            Goal:
-            {task.attributes.goal}
-          </h3>
-          <h3>
-            total:
-            {task.attributes['measurements-total']}
-          </h3>
-        </div>
+        {
+          (task) ? (
+            <div>
+              <h1>{task.attributes.name}</h1>
+              <h1>
+                priority:
+                {task.attributes.priority}
+              </h1>
+              <h2>
+                <Link to={`/routines/${parseInt(task.attributes['routine-id'], 10)}`}>
+                  from &nbsp;
+                  {task.attributes.routine}
+                  &nbsp;
+                  routine
+                </Link>
+              </h2>
+              <h3>
+                Goal:
+                {task.attributes.goal}
+              </h3>
+              <h3>
+                total:
+                {task.attributes['measurements-total']}
+              </h3>
+            </div>
+          ) : (
+            <div>This task is not available</div>
+          )
+        }
       </div>
       <div>
         {listMeasurements}
