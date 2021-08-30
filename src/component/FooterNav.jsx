@@ -37,7 +37,7 @@ const FooterNav = () => {
                         <GoDiffAdded />
                       </IconContext.Provider>
                     </span>
-                    Timeline
+                    My Routines
                   </Link>
                 </li>
                 <li className="nav-item">
