@@ -51,7 +51,7 @@ const AddMeasurement = () => {
         document.getElementById('errors_notif').style.display = 'none';
       }, 6000);
     }
-  });
+  }, [edit_success, error]);
 
   const selectTask = (tasksList)
     ? (
@@ -117,8 +117,6 @@ const AddMeasurement = () => {
             id="measurement_quantity_input"
             type="number"
             name="quantity"
-            min="1"
-            max="10"
             placeholder="How much is your progress? "
             onChange={(e) => setQuantity(e.target.value)}
             required
