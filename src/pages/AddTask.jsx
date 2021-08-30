@@ -39,12 +39,12 @@ const AddTask = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(setTask(name, priority, goal, unit, routine_id));
-    dispatch(getAllTasks());
   };
 
   useEffect(() => {
     if (edit_success === true) {
       document.getElementById('success_notif').style.display = 'block';
+      dispatch(getAllTasks());
       dispatch(clearEditTaskState());
       setTimeout(() => {
         document.getElementById('success_notif').style.display = 'none';
