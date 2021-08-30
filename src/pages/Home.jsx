@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { AiOutlineAreaChart } from 'react-icons/ai';
+import Spinner from 'react-bootstrap/Spinner';
 import homestyles from '../styles/Home.module.css';
 import styles from '../styles/Card.module.css';
 import { getRoutines } from '../actions/routines';
-import RoutineCard from '../component/RoutineCard';
 
 const Home = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -24,16 +24,14 @@ const Home = () => {
   const routinesList = useSelector((state) => state.routines.routines);
   const loading = useSelector((state) => state.routines.loading);
 
-  const routineTest = {
-    name: 'No routine yet! Make yourself a coffee!',
-    icon: 'fas fa-coffee',
-    priority: 1,
-  };
-
   console.log(routinesList);
 
   if (loading) {
-    return <h3>Loading data ...</h3>;
+    return (
+      <Spinner animation="border" role="status" variant="info">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
 
   const display = (list) => {
@@ -83,9 +81,6 @@ const Home = () => {
           </IconContext.Provider>
         </span>
       </h2>
-      <div>
-        <RoutineCard routine={routineTest} />
-      </div>
       <div>
         {display(routinesList)}
       </div>
