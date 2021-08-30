@@ -19,16 +19,10 @@ const Navigation = () => {
 
   const { user: currentUser } = useSelector((state) => state.authentication);
   const { isLoggedIn } = useSelector((state) => state.authentication);
+  const admin = useSelector((state) => state.authentication.admin);
   const dispatch = useDispatch();
   // const admin = currentUser ? currentUser.data.meta.admin : false;
-  const admin = false;
   console.log(currentUser);
-
-  // useEffect(() => {
-  //   history.listen((location) => {
-  //     dispatch(clearMessage(location));
-  //   });
-  // }, [dispatch]);
 
   const logOut = () => {
     dispatch(logout());
@@ -52,25 +46,18 @@ const Navigation = () => {
         {
             isLoggedIn ? (
               <li className="nav-item">
-                <Link className="nav-link" to="/home">home</Link>
+                <Link className="nav-link" to="/profile">
+                  Profile
+                </Link>
               </li>
             ) : (
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>
               </li>
             )
-          }
+        }
         {
-            isLoggedIn && (
-              <li className="nav-item">
-                <Link className="nav-link" to="/profile">
-                  Profile
-                </Link>
-              </li>
-            )
-          }
-        {
-            admin && (
+            admin && isLoggedIn && (
             <li className="nav-item">
               <Link className="nav-link" to="/admin">
                 Admin-dashboard
