@@ -19,6 +19,7 @@ import TaskDetailPage from './pages/TaskDetailPage';
 import AddTask from './pages/AddTask';
 import AddMeasurement from './pages/AddMeasurement';
 import AlertNotifications from './component/AlertNotifications';
+import AddRoutine from './pages/AddRoutine';
 
 const App = () => {
   const { isLoggedIn } = useSelector((state) => state.authentication);
@@ -42,7 +43,7 @@ const App = () => {
           <Route exact path="/admin" component={Admin} />
           <Route exact path="/myroutines" component={Home} />
           <Route exact path="/measureup" component={AddMeasurement} />
-          <Route exact path="/routineform" component={Admin} />
+          <Route exact path="/addroutine" component={AddRoutine} />
           <Route exact path="/routines/:routineid" component={RoutineDetailPage} />
           <Route exact path="/tasks/:taskid" component={TaskDetailPage} />
           <Route exact path="/addtask" component={AddTask} />
