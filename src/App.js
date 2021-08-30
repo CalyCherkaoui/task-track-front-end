@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable react/no-this-in-sfc */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Switch, Route, HashRouter } from 'react-router-dom';
@@ -18,7 +17,8 @@ import NotFound from './pages/NotFound';
 import RoutineDetailPage from './pages/RoutineDetailPage';
 import TaskDetailPage from './pages/TaskDetailPage';
 import AddTask from './pages/AddTask';
-// import history from './helpers/history';
+import AddMeasurement from './pages/AddMeasurement';
+import AlertNotifications from './component/AlertNotifications';
 
 const App = () => {
   const { isLoggedIn } = useSelector((state) => state.authentication);
@@ -26,6 +26,7 @@ const App = () => {
   return (
     <HashRouter basename="">
       <Navigation />
+      <AlertNotifications />
       <div className="container mt-3">
         <Switch>
           {
@@ -39,13 +40,13 @@ const App = () => {
           <Route exact path="/signup" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/admin" component={Admin} />
-          <Route exact path="/timeline" component={Admin} />
-          <Route exact path="/measureup" component={Admin} />
+          <Route exact path="/myroutines" component={Home} />
+          <Route exact path="/measureup" component={AddMeasurement} />
           <Route exact path="/routineform" component={Admin} />
           <Route exact path="/routines/:routineid" component={RoutineDetailPage} />
           <Route exact path="/tasks/:taskid" component={TaskDetailPage} />
           <Route exact path="/addtask" component={AddTask} />
-          { /* Catch all route */ }
+          { /* Catch all routes */ }
           <Route path="*" component={NotFound} status={404} />
         </Switch>
       </div>

@@ -5,14 +5,12 @@ import getProfile from '../actions/profile';
 
 const Profile = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
-  const { id: userid } = useSelector((state) => state.authentication);
-  const dispatch = useDispatch();
-  // console.log(currentUser);
-  // console.log(userid);
-
-  if (!currentUser || !sessionStorage.getItem('token')) {
+  const { isLoggedIn } = useSelector((state) => state.authentication);
+  if (!currentUser || !sessionStorage.getItem('token') || !isLoggedIn) {
     return <Redirect to="/login" />;
   }
+  const { id: userid } = useSelector((state) => state.authentication);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProfile(userid));

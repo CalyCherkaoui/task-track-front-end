@@ -8,8 +8,8 @@ import {
   GET_TASK_FAIL,
   SET_TASK_SUCCESS,
   SET_TASK_FAIL,
-  UPDATE_TASK_SUCCESS,
-  UPDATE_TASK_FAIL,
+  DELETE_TASK_SUCCESS,
+  DELETE_TASK_FAIL,
   GET_ROUTINES_TASK_SUCCESS,
   GET_ROUTINES_TASK_FAIL,
   CLEAR_EDIT_TASK_STATE,
@@ -82,44 +82,28 @@ export const setTask = (
   }
 };
 
-export const updateTask = (
-  taskid,
-  name,
-  priority,
-  goal,
-  unity,
-  routine_id,
-) => async (dispatch) => {
+export const deleteTask = (taskid) => async (dispatch) => {
   axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
-
-  const taskData = {
-    name,
-    priority,
-    goal,
-    unity,
-    routine_id,
-  };
-
-  const headers = {
-    'Content-Type': 'application/json',
-  };
+  // const headers = {
+  //   'Content-Type': 'application/json',
+  // };
 
   try {
-    const response = await axios.put(`${API_ROOT}tasks/${taskid}`, { task: taskData }, { headers });
+    const response = await axios.delete(`${API_ROOT}tasks/${taskid}`);
 
     console.log('task update');
     console.log(response.data);
 
     dispatch({
-      type: UPDATE_TASK_SUCCESS,
+      type: DELETE_TASK_SUCCESS,
       payload: response.data,
     });
   } catch (error) {
     dispatch({
-      type: UPDATE_TASK_FAIL,
+      type: DELETE_TASK_FAIL,
       payload: error,
     });
-    console.log('task update errors');
+    console.log('task DELETE errors');
     console.log(error);
   }
 };

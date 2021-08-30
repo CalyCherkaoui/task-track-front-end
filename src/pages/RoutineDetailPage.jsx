@@ -7,7 +7,8 @@ import styles from '../styles/Card.module.css';
 
 const RoutineDetailPage = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
-  if (!currentUser || !sessionStorage.getItem('token')) {
+  const { isLoggedIn } = useSelector((state) => state.authentication);
+  if (!currentUser || !sessionStorage.getItem('token') || !isLoggedIn) {
     return <Redirect to="/login" />;
   }
 

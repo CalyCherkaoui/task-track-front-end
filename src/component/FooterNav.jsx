@@ -1,8 +1,5 @@
-/* eslint-disable no-console */
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { Link, useHistory, Router } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { AiOutlineAreaChart } from 'react-icons/ai';
@@ -11,22 +8,10 @@ import { GoDiffAdded } from 'react-icons/go';
 import { ImLab } from 'react-icons/im';
 import { Navbar, Nav } from 'react-bootstrap';
 import styles from '../styles/Navigation.module.css';
-// import history from '../helpers/history';
 
 const FooterNav = () => {
-  // const history = useHistory();
-
-  // if (sessionStorage.length === 0 || sessionStorage.token === 'undefined') {
-  //   return history.push('/logout');
-  // }
-
-  // const { user: currentUser } = useSelector((state) => state.authentication);
   const { isLoggedIn } = useSelector((state) => state.authentication);
   const { admin } = useSelector((state) => state.authentication);
-
-  // const dispatch = useDispatch();
-  // const admin = currentUser ? currentUser.data.meta.admin : false;
-  console.log(isLoggedIn);
 
   return (
 
@@ -46,13 +31,13 @@ const FooterNav = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/timeline" className="nav-link">
+                  <Link to="/myroutines" className="nav-link">
                     <span className={styles.nav_logo_emph}>
                       <IconContext.Provider value={{ className: 'footer_icon' }}>
                         <GoDiffAdded />
                       </IconContext.Provider>
                     </span>
-                    Timeline
+                    My Routines
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -88,7 +73,6 @@ const FooterNav = () => {
       </Nav>
     </Navbar>
 
-  // </Router>
   );
 };
 

@@ -3,15 +3,16 @@
 // import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Redirect, Link, useHistory } from 'react-router-dom';
 import { Redirect, Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 import { setTask, clearEditTaskState } from '../actions/tasks';
-import AlertBox from '../component/AlertBox';
+import { getAllTasks } from '../actions/measurements';
+// import AlertBox from '../component/AlertBox';
 
 const AddTask = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
-  if (!currentUser || !sessionStorage.getItem('token')) {
+  const { isLoggedIn } = useSelector((state) => state.authentication);
+  if (!currentUser || !sessionStorage.getItem('token') || !isLoggedIn) {
     return <Redirect to="/login" />;
   }
 
@@ -26,8 +27,6 @@ const AddTask = () => {
   const loading = useSelector((state) => state.task.loading);
   const edit_success = useSelector((state) => state.task.edit_success);
   const error = useSelector((state) => state.task.error);
-  // const task = useSelector((state) => state.task.task);
-  // const message = useSelector((state) => state.task.message);
 
   if (loading) {
     return (
@@ -44,44 +43,19 @@ const AddTask = () => {
 
   useEffect(() => {
     if (edit_success === true) {
-      // document.getElementById('add_task_success_notif').style.display = 'block';
-      // const alertBox = document.getElementById('add_task_success_notif');
-      // alertBox.append(<AlertBox
-      //   alertprops={{
-      //     variant: 'success',
-      //     message,
-      //   }}
-      // />);
-      // alertBox.style.display = 'block';
-      document.getElementById('add_task_success_notif').style.display = 'block';
+      document.getElementById('success_notif').style.display = 'block';
+      dispatch(getAllTasks());
       dispatch(clearEditTaskState());
       setTimeout(() => {
-        document.getElementById('add_task_success_notif').style.display = 'none';
+        document.getElementById('success_notif').style.display = 'none';
       }, 5000);
     }
 
-    // if (task) {
-    //   setTimeout(() => {
-    //     history.push(`/tasks/${parseInt(task.id, 10)}`);
-    //   }, 5000);
-    // }
-
     if (error) {
-      document.getElementById('add_task_errors_notif').style.display = 'block';
-      // // const errorBox = (
-      // //   <AlertBox
-      // //     alertprops={{
-      // //       variant: 'danger',
-      // //       message: 'Oops! Something went wrong! Try again!',
-      // //     }}
-      // //   />
-      // // );
-      // const errorBoxWrapper = document.getElementById('add_task_errors_notif');
-      // // errorBoxWrapper.append(errorBox);
-      // errorBoxWrapper.style.display = 'block';
+      document.getElementById('errors_notif').style.display = 'block';
       dispatch(clearEditTaskState());
       setTimeout(() => {
-        document.getElementById('add_task_errors_notif').style.display = 'none';
+        document.getElementById('errors_notif').style.display = 'none';
       }, 5000);
     }
   });
@@ -122,7 +96,7 @@ const AddTask = () => {
       <h1>
         Add a Task to track!
       </h1>
-      <div
+      {/* <div
         id="add_task_success_notif"
         style={{ display: 'none', color: 'green' }}
       >
@@ -144,7 +118,7 @@ const AddTask = () => {
             message: 'Oops! Something went wrong! Try again!',
           }}
         />
-      </div>
+      </div> */}
       <form onSubmit={handleSubmit}>
         <label htmlFor="task_name_input">
           Name:
