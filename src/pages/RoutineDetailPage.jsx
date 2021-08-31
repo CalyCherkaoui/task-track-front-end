@@ -48,7 +48,7 @@ const RoutineDetailPage = () => {
         <li className={styles.card_wrapper} key={`key_${element.id}`}>
           <Link to={`/tasks/${parseInt(element.id, 10)}`}>
             <div className={styles.card_icon}>
-              <i className="fas fa-coffee fa-2x" />
+              <i className={element.attributes.icon} />
             </div>
             <div className={styles.card_title}>
               {element.attributes.name}

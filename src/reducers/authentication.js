@@ -30,6 +30,7 @@ const authenticationReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         error: action.payload,
+        admin: false,
       };
     case LOGIN_SUCCESS:
       return {
@@ -45,6 +46,7 @@ const authenticationReducer = (state = initialState, action) => {
         isLoggedIn: false,
         user: null,
         error: action.payload,
+        admin: false,
       };
     case LOGOUT:
       sessionStorage.clear();
@@ -53,6 +55,7 @@ const authenticationReducer = (state = initialState, action) => {
         isLoggedIn: false,
         user: null,
         message: action.payload.message,
+        admin: false,
       };
     default:
       return state;

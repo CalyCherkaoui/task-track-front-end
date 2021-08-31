@@ -16,20 +16,22 @@ const Profile = () => {
     dispatch(getProfile(userid));
   }, [dispatch]);
 
-  const profile = useSelector((state) => state.profile);
+  const profile = useSelector((state) => state.profile.profile);
+  const herotask = useSelector((state) => state.profile.herotask);
 
   return (
     <div className="container">
-      <h2>current user</h2>
-      <p>
-        {typeof userid}
-      </p>
+      <h2>
+        Welcome
+        {' '}
+        {currentUser.name}
+      </h2>
       <h2>Profile content</h2>
       <p>
-        {JSON.stringify(currentUser)}
+        {JSON.stringify(profile)}
       </p>
       <p>
-        {JSON.stringify(profile)}
+        {JSON.stringify(herotask)}
       </p>
     </div>
   );

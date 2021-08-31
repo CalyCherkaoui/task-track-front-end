@@ -1,11 +1,10 @@
 /* eslint-disable camelcase */
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 import { setMeasurement, clearEditMeasurementState } from '../actions/measurements';
-// import AlertBox from '../component/AlertBox';
+import { setNotification, clearNotification } from '../actions/notifications';
 
 const AddMeasurement = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -37,10 +36,12 @@ const AddMeasurement = () => {
 
   useEffect(() => {
     if (edit_success === true) {
+      dispatch(setNotification('Measurement was successfully recorded!'));
       document.getElementById('success_notif').style.display = 'block';
       dispatch(clearEditMeasurementState());
       setTimeout(() => {
         document.getElementById('success_notif').style.display = 'none';
+        dispatch(clearNotification());
       }, 6000);
     }
 
@@ -87,29 +88,6 @@ const AddMeasurement = () => {
       <h1>
         Take a measurement!
       </h1>
-      {/* <div
-        id="add_measurement_success_notif"
-        style={{ display: 'none', color: 'green' }}
-      >
-        <AlertBox
-          alertprops={{
-            variant: 'success',
-            message: 'measurement Successfully Added!',
-          }}
-        />
-
-      </div>
-      <div
-        id="add_measurement_errors_notif"
-        style={{ display: 'none', color: 'red' }}
-      >
-        <AlertBox
-          alertprops={{
-            variant: 'danger',
-            message: 'Oops! Something went wrong! Try again!',
-          }}
-        />
-      </div> */}
       <form onSubmit={handleSubmit}>
         <label htmlFor="measurement_quantity_input">
           Quantity:

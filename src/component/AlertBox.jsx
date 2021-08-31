@@ -10,12 +10,11 @@ const AlertBox = ({ alertprops }) => {
     <>
       <Alert show={show} variant={alertprops.variant}>
         <Alert.Heading>{alertprops.message}</Alert.Heading>
-        <hr />
         <div className="d-flex justify-content-end">
           <Button onClick={() => setShow(false)} variant={alertprops.variant}>
             <i
               className="fas fa-times"
-              style={{ fontSize: '20px' }}
+              style={{ fontSize: '16px' }}
             />
           </Button>
         </div>

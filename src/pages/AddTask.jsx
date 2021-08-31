@@ -1,13 +1,12 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-console */
-// import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 import { setTask, clearEditTaskState } from '../actions/tasks';
 import { getAllTasks } from '../actions/measurements';
-// import AlertBox from '../component/AlertBox';
+import { setNotification, clearNotification } from '../actions/notifications';
 
 const AddTask = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -22,7 +21,6 @@ const AddTask = () => {
   const [goal, setGoal] = useState();
   const [unit, setUnit] = useState();
   const [routine_id, setRoutine_id] = useState();
-  // const history = useHistory();
   const routinesList = useSelector((state) => state.task.routineslist);
   const loading = useSelector((state) => state.task.loading);
   const edit_success = useSelector((state) => state.task.edit_success);
@@ -43,12 +41,14 @@ const AddTask = () => {
 
   useEffect(() => {
     if (edit_success === true) {
+      dispatch(setNotification('Great! Task is now tracked! Dont forget to take a measurement'));
       document.getElementById('success_notif').style.display = 'block';
       dispatch(getAllTasks());
       dispatch(clearEditTaskState());
       setTimeout(() => {
         document.getElementById('success_notif').style.display = 'none';
-      }, 5000);
+        dispatch(clearNotification());
+      }, 4000);
     }
 
     if (error) {
@@ -56,7 +56,7 @@ const AddTask = () => {
       dispatch(clearEditTaskState());
       setTimeout(() => {
         document.getElementById('errors_notif').style.display = 'none';
-      }, 5000);
+      }, 4000);
     }
   });
 
@@ -66,11 +66,9 @@ const AddTask = () => {
         name="routine"
         id="routine_id"
         onChange={(e) => setRoutine_id(e.target.value)}
-        // value={parseInt(routinesList[0].id, 10)}
       >
         <option
           key="key_"
-          // value={parseInt(routinesList[0].id, 10)}
         >
           Select a Routine for your task!
         </option>
@@ -86,7 +84,7 @@ const AddTask = () => {
     ) : (
       <select>
         <option value={1}>
-          Random
+          No routine available yet!
         </option>
       </select>
     );
@@ -96,29 +94,6 @@ const AddTask = () => {
       <h1>
         Add a Task to track!
       </h1>
-      {/* <div
-        id="add_task_success_notif"
-        style={{ display: 'none', color: 'green' }}
-      >
-        <AlertBox
-          alertprops={{
-            variant: 'success',
-            message: 'Task Successfully Added!',
-          }}
-        />
-
-      </div>
-      <div
-        id="add_task_errors_notif"
-        style={{ display: 'none', color: 'red' }}
-      >
-        <AlertBox
-          alertprops={{
-            variant: 'danger',
-            message: 'Oops! Something went wrong! Try again!',
-          }}
-        />
-      </div> */}
       <form onSubmit={handleSubmit}>
         <label htmlFor="task_name_input">
           Name:
