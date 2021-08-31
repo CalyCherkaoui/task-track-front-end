@@ -1,17 +1,75 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+*,
+*::after,
+*::before {
   margin: 0;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 87.5%;
+}
+
+body {
+  box-sizing: border-box;
+  position: relative;
+  font-size: 1em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Work Sans', sans-serif;
+  --font-logo-brand: 'Fredericka the Great', cursive;
+  --font-logo-secondary: 'Caveat', cursive;
+
+  /* --theme-blue-dark: rgb(98, 181, 229); */
+  --theme-blue: rgb(0, 234, 255);
+  --theme-green: #86df81;
+  --theme-grey: #323943;
+
+  --white: rgb(255, 255, 255);
+  --black: #1e1e1e;
+  --pink: #ff5ab7;
+  --tangerine: #da4221;
+  --yellow: #fca311;
+  --blue-dark: #0f4c81;
+
+  --mobile-width-max: 480px;
+  --mobile-height-max: 95vh;
+
+  --mobile-width-min: 300px;
+  --mobile-height-min: 735px;
+}
+
+.shadowed_small {
+  -webkit-box-shadow: 0 2px 6px 0 rgba(10, 22, 78, 0.15);
+  -moz-box-shadow: 0 2px 6px 0 rgba(10, 22, 78, 0.15);
+  box-shadow: 0 2px 6px 0 rgba(10, 22, 78, 0.15);
+}
+
+.shadowed_big {
+  -webkit-box-shadow: 13px 17px 50px 5px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 13px 17px 50px 5px rgba(0, 0, 0, 0.33);
+  box-shadow: 13px 17px 50px 5px rgba(0, 0, 0, 0.33);
+}
+
+#root {
+  max-width: var(--mobile-width-max);
+  min-width: var(--mobile-width-min);
+  max-height: var(--mobile-height-max);
+  min-height: var(--mobile-height-min);
+  /* background-color: aqua; */
+  border: aqua solid 3px;
 }

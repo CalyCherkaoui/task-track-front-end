@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, HashRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
 import Navigation from './component/Navigation';
 import FooterNav from './component/FooterNav';
 import Footer from './component/Footer';
@@ -27,7 +28,7 @@ const App = () => {
     <HashRouter basename="">
       <Navigation />
       <AlertNotifications message={message} />
-      <div className="container mt-3">
+      <Container fluid>
         <Switch>
           {
             isLoggedIn ? (
@@ -49,7 +50,7 @@ const App = () => {
           { /* Catch all routes */ }
           <Route path="*" component={NotFound} status={404} />
         </Switch>
-      </div>
+      </Container>
       {
         isLoggedIn ? (
           <FooterNav />
