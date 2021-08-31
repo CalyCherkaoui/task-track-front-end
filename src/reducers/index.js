@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import authentication from './authentication';
-import message from './message';
+import notification from './notification';
 import profile from './profile';
 import routines from './routines';
 import task from './task';
@@ -9,7 +9,7 @@ import admin from './adminBorad';
 
 const rootReducer = combineReducers({
   authentication,
-  message,
+  notification,
   profile,
   routines,
   task,
