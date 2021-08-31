@@ -4,7 +4,8 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  profile: {},
+  profile: null,
+  herotask: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -12,12 +13,15 @@ const profileReducer = (state = initialState, action) => {
     case GET_PROFILE_SUCCESS:
       return {
         ...state,
-        profile: action.payload,
+        profile: action.payload.data,
+        herotask: action.payload.included,
       };
     case GET_PROFILE_FAIL:
       return {
         ...state,
         error: action.payload,
+        profile: null,
+        herotask: null,
       };
     default:
       return state;
