@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Switch, Route, HashRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -23,11 +21,12 @@ import AddRoutine from './pages/AddRoutine';
 
 const App = () => {
   const { isLoggedIn } = useSelector((state) => state.authentication);
+  const message = useSelector((state) => state.notification.message);
 
   return (
     <HashRouter basename="">
       <Navigation />
-      <AlertNotifications />
+      <AlertNotifications message={message} />
       <div className="container mt-3">
         <Switch>
           {
