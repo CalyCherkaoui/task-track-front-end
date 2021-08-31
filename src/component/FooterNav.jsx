@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
-import styles from '../styles/Navigation.module.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import styles from '../styles/FooterNav.module.css';
 
 const FooterNav = () => {
   const { isLoggedIn } = useSelector((state) => state.authentication);
@@ -10,71 +10,58 @@ const FooterNav = () => {
 
   return (
 
-    <Navbar className="justify-content-between">
-      <Nav className={styles.footer_nav_wrapper}>
+    <div className={`${styles.footer_nav_wrapper} box_flex_col_centered`}>
+      <Container className="g-0">
         {
             (isLoggedIn && !admin) && (
-              <div className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link to="/addtask" className="nav-link">
-                    <span className={styles.nav_logo_emph}>
-                      <i className="fas fa-plus" />
-                    </span>
-                    Track Task
+              <Row className="g-0">
+                <Col className="box_flex_col_centered g-0">
+                  <Link to="/addtask" className={`${styles.footer_nav_link} box_flex_col_centered`}>
+                    <i className="fas fa-plus" />
+                    <p className={styles.footer_nav_text}>Track Task</p>
                   </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/myroutines" className="nav-link">
-                    <span className={styles.nav_logo_emph}>
-                      <i className="fab fa-creative-commons-sampling" />
-                    </span>
-                    My Routines
+                </Col>
+                <Col className="box_flex_col_centered g-0">
+                  <Link to="/myroutines" className={`${styles.footer_nav_link} box_flex_col_centered`}>
+                    <i className="fab fa-creative-commons-sampling" />
+                    <p className={styles.footer_nav_text}>my routines</p>
                   </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/measureup" className="nav-link">
-                    <span className={styles.nav_logo_emph}>
-                      <i className="fas fa-pencil-ruler" />
-                    </span>
-                    Measure-up
+                </Col>
+                <Col className="box_flex_col_centered g-0">
+                  <Link to="/measureup" className={`${styles.footer_nav_link} box_flex_col_centered`}>
+                    <i className="fas fa-pencil-ruler" />
+                    <p className={styles.footer_nav_text}>Measure-up</p>
                   </Link>
-                </li>
-              </div>
+                </Col>
+              </Row>
             )
         }
         {
             admin && isLoggedIn && (
-              <div>
-                <li className="nav-item">
-                  <Link to="/addroutine" className="nav-link">
-                    <span className={styles.nav_logo_emph}>
-                      <i className="fas fa-tools" />
-                    </span>
-                    add routine
+              <Row className="g-0">
+                <Col className="box_flex_col_centered g-0">
+                  <Link to="/addroutine" className={`${styles.footer_nav_link} box_flex_col_centered`}>
+                    <i className="fas fa-tools" />
+                    <p className={styles.footer_nav_text}>add routine</p>
                   </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/admin" className="nav-link">
-                    <span className={styles.nav_logo_emph}>
-                      <i className="fas fa-flask" />
-                    </span>
-                    dashboard
+                </Col>
+                <Col className="box_flex_col_centered g-0">
+                  <Link to="/admin" className={`${styles.footer_nav_link} box_flex_col_centered`}>
+                    <i className="fas fa-flask" />
+                    <p className={styles.footer_nav_text}>dashboard</p>
                   </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/home" className="nav-link">
-                    <span className={styles.nav_logo_emph}>
-                      <i className="fas fa-th-list" />
-                    </span>
-                    Routines
+                </Col>
+                <Col className="box_flex_col_centered g-0">
+                  <Link to="/home" className={`${styles.footer_nav_link} box_flex_col_centered`}>
+                    <i className="fas fa-th-list" />
+                    <p className={styles.footer_nav_text}> Routines</p>
                   </Link>
-                </li>
-              </div>
+                </Col>
+              </Row>
             )
           }
-      </Nav>
-    </Navbar>
-
+      </Container>
+    </div>
   );
 };
 
