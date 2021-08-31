@@ -6,6 +6,7 @@ import { Redirect, Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 import { setTask, clearEditTaskState } from '../actions/tasks';
 import { getAllTasks } from '../actions/measurements';
+import { setNotification, clearNotification } from '../actions/notifications';
 
 const AddTask = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -40,12 +41,14 @@ const AddTask = () => {
 
   useEffect(() => {
     if (edit_success === true) {
+      dispatch(setNotification('Great! Task is now tracked! Dont forget to take a measurement'));
       document.getElementById('success_notif').style.display = 'block';
       dispatch(getAllTasks());
       dispatch(clearEditTaskState());
       setTimeout(() => {
         document.getElementById('success_notif').style.display = 'none';
-      }, 5000);
+        dispatch(clearNotification());
+      }, 4000);
     }
 
     if (error) {
@@ -53,7 +56,7 @@ const AddTask = () => {
       dispatch(clearEditTaskState());
       setTimeout(() => {
         document.getElementById('errors_notif').style.display = 'none';
-      }, 5000);
+      }, 4000);
     }
   });
 

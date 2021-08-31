@@ -1,11 +1,10 @@
 /* eslint-disable camelcase */
-/* eslint-disable no-console */
-// import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { getRoutines } from '../actions/routines';
 import { setRoutine, clearEditRoutineState } from '../actions/adminBoard';
+import { setNotification, clearNotification } from '../actions/notifications';
 
 const AddRoutine = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -33,11 +32,13 @@ const AddRoutine = () => {
 
   useEffect(() => {
     if (edit_success === true) {
+      dispatch(setNotification('Routine was successfully added!'));
       document.getElementById('success_notif').style.display = 'block';
       dispatch(getRoutines());
       dispatch(clearEditRoutineState());
       setTimeout(() => {
         document.getElementById('success_notif').style.display = 'none';
+        dispatch(clearNotification());
       }, 3000);
     }
 
