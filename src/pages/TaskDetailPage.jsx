@@ -79,7 +79,7 @@ const TaskDetailPage = () => {
             </div>
           </div>
           <div>
-            <i className="fas fa-ellipsis-v" />
+            <i className={element.attributes.icon} />
             <div className={styles.card_title}>
               {element.attributes.quantity}
               {element.attributes.unity}

@@ -4,34 +4,27 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
-import Spinner from 'react-bootstrap/Spinner';
+import { getRoutines } from '../actions/routines';
 import { setRoutine, clearEditRoutineState } from '../actions/adminBoard';
-import { getAllTasks } from '../actions/measurements';
-// import AlertBox from '../component/AlertBox';
 
 const AddRoutine = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
   const { isLoggedIn } = useSelector((state) => state.authentication);
+  const admin = useSelector((state) => state.authentication.admin);
   if (!currentUser || !sessionStorage.getItem('token') || !isLoggedIn) {
     return <Redirect to="/login" />;
+  }
+
+  if (!admin) {
+    return <Redirect to="/home" />;
   }
 
   const dispatch = useDispatch();
   const [name, setName] = useState();
   const [priority, setPriority] = useState();
   const [icon, setIcon] = useState();
-  // const history = useHistory();
-  const loading = useSelector((state) => state.admin.loading);
   const edit_success = useSelector((state) => state.admin.edit_success);
   const error = useSelector((state) => state.admin.error);
-
-  if (loading) {
-    return (
-      <Spinner animation="border" role="status" variant="info">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    );
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,11 +34,11 @@ const AddRoutine = () => {
   useEffect(() => {
     if (edit_success === true) {
       document.getElementById('success_notif').style.display = 'block';
-      dispatch(getAllTasks());
+      dispatch(getRoutines());
       dispatch(clearEditRoutineState());
       setTimeout(() => {
         document.getElementById('success_notif').style.display = 'none';
-      }, 5000);
+      }, 3000);
     }
 
     if (error) {
@@ -53,14 +46,14 @@ const AddRoutine = () => {
       dispatch(clearEditRoutineState());
       setTimeout(() => {
         document.getElementById('errors_notif').style.display = 'none';
-      }, 5000);
+      }, 3000);
     }
-  });
+  }, [edit_success, error]);
 
   return (
     <div>
       <h1>
-        Add a Task to track!
+        Add a routine!
       </h1>
       <h2>
         <i className="fas fa-tools" />

@@ -69,7 +69,7 @@ const Admin = () => {
               Delete Routine
             </Button>
             <div className={styles.card_icon}>
-              <i className="fas fa-coffee fa-2x" />
+              <i className={element.attributes.icon} />
             </div>
             <div className={styles.card_title}>
               {element.attributes.name}
