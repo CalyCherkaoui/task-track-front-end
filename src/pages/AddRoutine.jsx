@@ -56,10 +56,14 @@ const AddRoutine = () => {
   return (
     <div className={`${styles.form_wrapper} box_flex_col_centered p-4`}>
       <Container className="g-0 shadowed_small">
-        <Row className={`${styles.form_header_wrapper} g-0`}>
-          <Col className="box_flex_col_centered g-0">
-            <p className={styles.form_header_text}>
+        <Row className={`${styles.form_header_wrapper} g-0 d-flex align-items-baseline`}>
+          <Col className={`box_flex_col_centered g-0 ${styles.form_header_icon}`} xs={3}>
+            <span>
               <i className="fas fa-tools" />
+            </span>
+          </Col>
+          <Col className="box_flex_col_centered g-0" xs={9}>
+            <p className={styles.form_header_text}>
               Admin Toolbox
             </p>
           </Col>
@@ -125,9 +129,9 @@ const AddRoutine = () => {
           </Col>
         </Row>
         <Row>
-          <Link to="/admin">
-            <i className="fas fa-arrow-left fa-2x" />
-            Back to Routines
+          <Link to="/admin" className="col d-flex justify-content-center align-items-center p-3 text-info">
+            <i className="fas fa-angle-double-left fa-2x" />
+            <span className="mx-2">Back to dashboard</span>
           </Link>
         </Row>
       </Container>
