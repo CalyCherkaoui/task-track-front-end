@@ -1,0 +1,39 @@
+.aboutpage_wrapper {
+  height: 90vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.about_frame {
+  width: 65vh;
+  height: 65vh;
+  border: var(--pink) 8px solid;
+  padding: 5rem;
+}
+
+.aboutpage_text {
+  font-family: var(--font-primary);
+  font-size: 1.9rem;
+  font-weight: 200;
+  overflow-wrap: break-word;
+  color: var(--theme-grey);
+}
+
+.about_icon {
+  font-size: 2rem;
+  color: var(--black);
+  margin-left: 0.5rem;
+}
+
+.about_icons_link {
+  text-decoration: none;
+}
+
+.about_icons_link:hover {
+  cursor: pointer;
+}
+
+.about_icons_link svg:hover {
+  color: var(---pink);
+}
