@@ -86,3 +86,15 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+.svg_progress_bar {
+  display: block;
+}
+
+.in_circle {
+  fill: none;
+}
+
+.exo_circle {
+  fill: none;
+}
