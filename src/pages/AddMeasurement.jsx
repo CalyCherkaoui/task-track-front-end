@@ -3,8 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
+import { Container, Row, Col } from 'react-bootstrap';
 import { setMeasurement, clearEditMeasurementState } from '../actions/measurements';
 import { setNotification, clearNotification } from '../actions/notifications';
+import styles from '../styles/Form.module.css';
 
 const AddMeasurement = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -60,6 +62,7 @@ const AddMeasurement = () => {
         name="task"
         id="task_id"
         onChange={(e) => setTask_id(e.target.value)}
+        className={styles.form_input}
       >
         <option
           key="key_"
@@ -76,7 +79,9 @@ const AddMeasurement = () => {
         ))}
       </select>
     ) : (
-      <select>
+      <select
+        className={styles.form_input}
+      >
         <option>
           No Tasks available yet! Create one!
         </option>
@@ -84,38 +89,89 @@ const AddMeasurement = () => {
     );
 
   return (
-    <div>
-      <h1>
-        Take a measurement!
-      </h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="measurement_quantity_input">
-          Quantity:
-          <input
-            id="measurement_quantity_input"
-            type="number"
-            name="quantity"
-            placeholder="How much is your progress? "
-            onChange={(e) => setQuantity(e.target.value)}
-            required
-          />
-        </label>
+    <div className={`${styles.form_wrapper} box_flex_col_centered p-4`}>
+      <Container className="g-0 shadowed_small">
+        <Row className={`${styles.form_header_wrapper} g-0`}>
+          <Col className="box_flex_col_centered g-0">
+            <p className={styles.form_header_text}>Login</p>
+          </Col>
+        </Row>
+        <Row className={`${styles.form_form_wrapper} g-0`}>
+          <Col className="box_flex_col_centered py-4">
+            <form
+              className={`${styles.form_form} px-3`}
+              onSubmit={handleSubmit}
+            >
+              <label
+                htmlFor="measurement_quantity_input"
+                className={`${styles.form_label} box_flex_col_centered`}
+              >
+                <input
+                  id="measurement_quantity_input"
+                  type="number"
+                  name="quantity"
+                  placeholder="Quantity: How much is your progress? "
+                  onChange={(e) => setQuantity(e.target.value)}
+                  required
+                  className={styles.form_input}
+                />
+              </label>
 
-        <label htmlFor="measurement_task_input">
-          Task :
-          {selectTask}
-        </label>
-        <button
-          type="submit"
-        >
-          Record Measurement!
-        </button>
-      </form>
-      <Link to="/home">
-        <i className="fas fa-arrow-left fa-2x" />
-        Back to my routines
-      </Link>
+              <label
+                className={`${styles.form_label} box_flex_col_centered`}
+                htmlFor="measurement_task_input"
+              >
+                {selectTask}
+              </label>
+              <button
+                className={styles.form_submit}
+                type="submit"
+              >
+                Record Measurement!
+              </button>
+            </form>
+          </Col>
+        </Row>
+        <Row>
+          <Link to="/home">
+            <i className="fas fa-arrow-left fa-2x" />
+            Back to my routines
+          </Link>
+        </Row>
+      </Container>
     </div>
+  // <div>
+  //   <h1>
+  //     Take a measurement!
+  //   </h1>
+  //   <form onSubmit={handleSubmit}>
+  //     <label htmlFor="measurement_quantity_input">
+  //       Quantity:
+  //       <input
+  //         id="measurement_quantity_input"
+  //         type="number"
+  //         name="quantity"
+  //         placeholder="How much is your progress? "
+  //         onChange={(e) => setQuantity(e.target.value)}
+  //         required
+  //       />
+  //     </label>
+
+  //     <label htmlFor="measurement_task_input">
+  //       Task :
+  //       {selectTask}
+  //     </label>
+  //     <button
+  //       type="submit"
+  //     >
+  //       Record Measurement!
+  //     </button>
+  //   </form>
+  //   <Link to="/home">
+  //     <i className="fas fa-arrow-left fa-2x" />
+  //     Back to my routines
+  //   </Link>
+  // </div>
   );
 };
 
