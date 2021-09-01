@@ -1,9 +1,48 @@
 .card_icon {
-  background-color: aqua;
-  width: 20px;
-  height: 20px;
+  /* background-color: aqua; */
+  height: 75px;
+  font-size: 3.5em;
 }
 
 .card_wrapper {
-  border: 1px solid blue;
+  width: 30%;
+  color: var(--theme-grey);
+}
+
+.card_wrapper a {
+  color: var(--theme-grey);
+  height: 100%;
+  /* background-color: cornflowerblue; */
+}
+
+.card_wrapper a:hover {
+  background-color: var(--theme-green);
+  color: var(--white);
+}
+
+.card_minimalist_text {
+  font-size: 1em;
+  font-family: var(--font-primary);
+  text-transform: capitalize;
+  font-weight: 300;
+  /* background-color: brown; */
+}
+
+.list_header_wrapper {
+  height: 5em;
+}
+
+.list_header_icon {
+  font-size: 2em;
+  background-color: var(--theme-green);
+  color: var(--white);
+  height: 100%;
+}
+
+.list_header_text {
+  font-size: 1.2em;
+  font-family: var(--font-primary);
+  font-weight: 200;
+  color: var(--theme-grey);
+  text-transform: uppercase;
 }
