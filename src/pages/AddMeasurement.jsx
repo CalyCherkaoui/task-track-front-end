@@ -91,9 +91,16 @@ const AddMeasurement = () => {
   return (
     <div className={`${styles.form_wrapper} box_flex_col_centered p-4`}>
       <Container className="g-0 shadowed_small">
-        <Row className={`${styles.form_header_wrapper} g-0`}>
-          <Col className="box_flex_col_centered g-0">
-            <p className={styles.form_header_text}>Login</p>
+        <Row className={`${styles.form_header_wrapper} g-0 d-flex align-items-baseline`}>
+          <Col className={`box_flex_col_centered g-0 ${styles.form_header_icon}`} xs={2}>
+            <span>
+              <i className="fas fa-pencil-ruler" />
+            </span>
+          </Col>
+          <Col className="box_flex_col_centered g-0" xs={10}>
+            <p className={styles.form_header_text}>
+              Record a measurement
+            </p>
           </Col>
         </Row>
         <Row className={`${styles.form_form_wrapper} g-0`}>
@@ -133,9 +140,9 @@ const AddMeasurement = () => {
           </Col>
         </Row>
         <Row>
-          <Link to="/home">
-            <i className="fas fa-arrow-left fa-2x" />
-            Back to my routines
+          <Link to="/home" className="col d-flex justify-content-center align-items-center p-4 text-info">
+            <i className="fas fa-angle-double-left fa-2x" />
+            <span className="mx-2">Back to my routines</span>
           </Link>
         </Row>
       </Container>
