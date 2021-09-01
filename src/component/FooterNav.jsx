@@ -10,7 +10,7 @@ const FooterNav = () => {
 
   return (
 
-    <div className={`${styles.footer_nav_wrapper} box_flex_col_centered`}>
+    <div className={`${styles.footer_wrapper} box_flex_col_centered`}>
       <Container className="g-0">
         {
             (isLoggedIn && !admin) && (
