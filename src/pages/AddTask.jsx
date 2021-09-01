@@ -99,10 +99,15 @@ const AddTask = () => {
 
     <div className={`${styles.form_wrapper} box_flex_col_centered p-4`}>
       <Container className="g-0 shadowed_small">
-        <Row className={`${styles.form_header_wrapper} g-0`}>
-          <Col className="box_flex_col_centered g-0">
+        <Row className={`${styles.form_header_wrapper} g-0 d-flex align-items-baseline`}>
+          <Col className={`box_flex_col_centered g-0 ${styles.form_header_icon}`} xs={3}>
+            <span>
+              <i className="fas fa-list" />
+            </span>
+          </Col>
+          <Col className="box_flex_col_centered g-0" xs={9}>
             <p className={styles.form_header_text}>
-              Add a Task to track!
+              Set a Task to track
             </p>
           </Col>
         </Row>
@@ -116,7 +121,6 @@ const AddTask = () => {
                 htmlFor="task_name_input"
                 className={`${styles.form_label} box_flex_col_centered`}
               >
-                Name:
                 <input
                   id="task_name_input"
                   type="text"
@@ -131,7 +135,6 @@ const AddTask = () => {
                 className={`${styles.form_label} box_flex_col_centered`}
                 htmlFor="task_priority_input"
               >
-                Priority:
                 <input
                   id="task_priority_input"
                   type="number"
@@ -148,7 +151,6 @@ const AddTask = () => {
                 className={`${styles.form_label} box_flex_col_centered`}
                 htmlFor="task_goal_input"
               >
-                Goal:
                 <input
                   id="task_goal_input"
                   type="number"
@@ -163,7 +165,6 @@ const AddTask = () => {
                 className={`${styles.form_label} box_flex_col_centered`}
                 htmlFor="task_unity_input"
               >
-                Unity of measurement:
                 <input
                   id="task_unity_input"
                   type="text"
@@ -190,9 +191,9 @@ const AddTask = () => {
           </Col>
         </Row>
         <Row>
-          <Link to="/home">
-            <i className="fas fa-arrow-left fa-2x" />
-            Back to my routines
+          <Link to="/home" className="col d-flex justify-content-center align-items-center p-3 text-info">
+            <i className="fas fa-angle-double-left fa-2x" />
+            <span className="mx-2">Back to my routines</span>
           </Link>
         </Row>
       </Container>
