@@ -2,8 +2,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Redirect, Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 import { getRoutine } from '../actions/routines';
-import styles from '../styles/Card.module.css';
+import styles from '../styles/Form.module.css';
+import cardstyles from '../styles/Card.module.css';
 
 const RoutineDetailPage = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -32,11 +34,22 @@ const RoutineDetailPage = () => {
   const display = (list) => {
     if (list.length === 0) {
       return (
-        <div>
-          <h3> No Routine yet! Make yourself a coffee!</h3>
-          <h3>
-            <i className="fas fa-coffee fa-2x" />
-          </h3>
+        <div className="w-70">
+          <Container>
+            <Row className={`${cardstyles.list_header_wrapper} d-flex align-items-baseline`}>
+              <Col className={`box_flex_col_centered ${cardstyles.list_header_icon}`} xs={2}>
+                <span>
+                  <i className="fas fa-coffee fa-1x" />
+                </span>
+              </Col>
+              <Col className="box_flex_col_centered g-0" xs={10}>
+                <Link to="/addtask" className={cardstyles.list_header_text}>
+                  No routine set yet!
+                  Create a task!
+                </Link>
+              </Col>
+            </Row>
+          </Container>
         </div>
       );
     }
