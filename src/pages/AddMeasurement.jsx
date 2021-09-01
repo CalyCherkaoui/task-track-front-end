@@ -140,38 +140,6 @@ const AddMeasurement = () => {
         </Row>
       </Container>
     </div>
-  // <div>
-  //   <h1>
-  //     Take a measurement!
-  //   </h1>
-  //   <form onSubmit={handleSubmit}>
-  //     <label htmlFor="measurement_quantity_input">
-  //       Quantity:
-  //       <input
-  //         id="measurement_quantity_input"
-  //         type="number"
-  //         name="quantity"
-  //         placeholder="How much is your progress? "
-  //         onChange={(e) => setQuantity(e.target.value)}
-  //         required
-  //       />
-  //     </label>
-
-  //     <label htmlFor="measurement_task_input">
-  //       Task :
-  //       {selectTask}
-  //     </label>
-  //     <button
-  //       type="submit"
-  //     >
-  //       Record Measurement!
-  //     </button>
-  //   </form>
-  //   <Link to="/home">
-  //     <i className="fas fa-arrow-left fa-2x" />
-  //     Back to my routines
-  //   </Link>
-  // </div>
   );
 };
 
