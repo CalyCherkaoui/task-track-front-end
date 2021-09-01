@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { getRoutine } from '../actions/routines';
 import styles from '../styles/Form.module.css';
 import cardstyles from '../styles/Card.module.css';
+import ProgressBar from '../component/ProgressBar';
 
 const RoutineDetailPage = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -30,6 +31,13 @@ const RoutineDetailPage = () => {
   if (loading) {
     return <h3>Loading data ...</h3>;
   }
+
+  const progressPercent = (val, goal) => {
+    const intVal = parseInt(val, 10);
+    const intGoal = parseInt(goal, 10);
+    const percentage = Math.round((intVal * 100) / intGoal) || 0;
+    return percentage;
+  };
 
   const display = (list) => {
     if (list.length === 0) {
@@ -74,6 +82,21 @@ const RoutineDetailPage = () => {
             </div>
             <div className={styles.card_title}>
               {element.attributes['measurements-total']}
+            </div>
+            <div className="stats_wrapper">
+              <div className="stats_graph">
+                <ProgressBar
+                  percentage={progressPercent(element.attributes['measurements-total'], element.attributes.goal)}
+                  size={80}
+                  strokeWidth={10}
+                  innCircleStroke="#f5f6fa"
+                  exoCircleStroke="#379cf6"
+                />
+              </div>
+              <div className="stats_text">
+                <div className="stats_text_percentage normal_typography">64%</div>
+                <div className="stats_text_comment normal_typography">completed</div>
+              </div>
             </div>
             <div className={styles.card_title}>
               {element.attributes['measurements-count']}
