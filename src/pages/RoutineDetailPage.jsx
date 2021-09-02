@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { getRoutine } from '../actions/routines';
-import styles from '../styles/Form.module.css';
+import styles from '../styles/DetailPage.module.css';
 import cardstyles from '../styles/Card.module.css';
 import ProgressBar from '../component/ProgressBar';
 
@@ -66,25 +66,22 @@ const RoutineDetailPage = () => {
 
     const listTasks = list.map(
       (element) => (
-        <li className={styles.card_wrapper} key={`key_${element.id}`}>
-          <Link to={`/tasks/${parseInt(element.id, 10)}`}>
-            <div className={styles.card_icon}>
-              <i className={element.attributes.icon} />
-            </div>
-            <div className={styles.card_title}>
-              {element.attributes.name}
-            </div>
-            <div className={styles.card_title}>
-              {element.attributes.priority}
-            </div>
-            <div className={styles.card_title}>
-              {element.attributes.unit}
-            </div>
-            <div className={styles.card_title}>
-              {element.attributes['measurements-total']}
-            </div>
-            <div className="stats_wrapper">
-              <div className="stats_graph">
+        <Row className={styles.long_card_wrapper} key={`key_${element.id}`}>
+          <Col xs={4} className={`${styles.long_card_title_wrapper} d-flex align-items-center justify-content-center`}>
+            <Link to={`/tasks/${parseInt(element.id, 10)}`} className="d-flex flex-column">
+              <div className={styles.long_card_title}>
+                {element.attributes.name}
+              </div>
+              <div className={styles.long_card_title_emph}>
+                Priority:
+                {' '}
+                {element.attributes.priority}
+              </div>
+            </Link>
+          </Col>
+          <Col className="d-flex flex-row" xs={8}>
+            <Link to={`/tasks/${parseInt(element.id, 10)}`} className={styles.long_card_graph_wrapper}>
+              <div className={styles.long_card_graph}>
                 <ProgressBar
                   percentage={progressPercent(element.attributes['measurements-total'], element.attributes.goal)}
                   size={80}
@@ -92,39 +89,48 @@ const RoutineDetailPage = () => {
                   innCircleStroke="#f5f6fa"
                   exoCircleStroke="#379cf6"
                 />
+                <div className={styles.long_card_graph_text}>
+                  {progressPercent(element.attributes['measurements-total'], element.attributes.goal)}
+                  <i className="fas fa-percent" />
+                </div>
               </div>
-              <div className="stats_text">
-                <div className="stats_text_percentage normal_typography">64%</div>
-                <div className="stats_text_comment normal_typography">completed</div>
+            </Link>
+            <Link to={`/tasks/${parseInt(element.id, 10)}`} className=" d-flex align-items-center justify-content-center">
+              <div className={`${styles.long_card_data} p-1`}>
+                Completed
+                of the goal to acheive
+                {' '}
+                <span>
+                  {element.attributes.goal}
+                  {' '}
+                  {element.attributes.unit}
+                </span>
               </div>
-            </div>
-            <div className={styles.card_title}>
-              {element.attributes['measurements-count']}
-            </div>
-            <div className={styles.card_title}>
-              {element.attributes.goal}
-            </div>
-          </Link>
-        </li>
+            </Link>
+          </Col>
+        </Row>
       ),
     );
 
     return (
-      <div>
-        <h4>{routine.name}</h4>
-        <ul>
-          { listTasks }
-        </ul>
-      </div>
+      <Container>
+        <Row className="my-2">
+          <Link to="/addtask" className={cardstyles.list_header_text}>
+            <Col className={`${styles.detail_pg_header}`}>
+              <i className={routine.icon} />
+              {' '}
+              {routine.name}
+            </Col>
+          </Link>
+        </Row>
+        {listTasks}
+      </Container>
     );
   };
 
   return (
     <div>
-      <h1>{routineid}</h1>
-      <div>
-        {display(tasks)}
-      </div>
+      {display(tasks)}
     </div>
   );
 };
