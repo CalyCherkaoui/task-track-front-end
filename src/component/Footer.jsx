@@ -35,7 +35,7 @@ const Footer = () => (
               <i className="fab fa-facebook" />
             </a>
             <a href="https://twitter.com/Houda59579688" className={`${styles.footer_simple_separator} ${styles.footer_simple_accent}`}>
-              <i className="fab fa-pinterest" />
+              <i className="fab fa-twitter" />
             </a>
           </div>
         </Col>

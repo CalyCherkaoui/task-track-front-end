@@ -1,26 +1,25 @@
 .nav_logo_typo_main {
   font-size: 1.6em;
   font-family: var(--font-logo-brand);
-  color: white !important;
+  color: var(--white) !important;
   margin-left: 0.5em;
 }
 
 .nav_logo_typo_second {
   color: var(--yellow);
-  /* color: white !important; */
   font-size: 0.80em !important;
   font-family: var(--font-logo-secondary) !important;
 }
 
 .nav_link_typo {
-  color: var(--black);
+  color: var(--white)  !important;
   font-family: var(--font-primary);
-  font-weight: 200;
+  font-weight: 400;
   text-transform: uppercase;
 }
 
 .nav_link_typo:hover {
-  color: aliceblue !important;
+  color: var(--tangerine) !important;
   font-weight: 700;
   transition: ease-in-out 3ms;
 }
