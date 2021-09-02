@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, Link, useHistory } from 'react-router-dom';
@@ -54,7 +53,6 @@ const Admin = () => {
   }, [deleted]);
 
   const handleDelete = (routineid) => {
-    console.log('delete');
     dispatch(deleteRoutine(routineid));
   };
 

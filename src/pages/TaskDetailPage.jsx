@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -6,7 +5,6 @@ import {
 } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 import Moment from 'moment';
-// import Chart from 'react-google-charts';
 import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { getTask, deleteTask, clearEditTaskState } from '../actions/tasks';
@@ -66,7 +64,6 @@ const TaskDetailPage = () => {
   }, [deleted]);
 
   const handleDelete = (taskid) => {
-    console.log('delete');
     dispatch(deleteTask(taskid));
   };
 

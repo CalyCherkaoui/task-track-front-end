@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import axios from 'axios';
 import API_ROOT from '../constantes/api';
 
@@ -9,18 +8,12 @@ import {
 
 const getProfile = (userid) => async (dispatch) => {
   axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
-  // const token = sessionStorage.getItem('token');
-
   try {
     const response = await axios.get(`${API_ROOT}users/${userid}`, {
       headers: {
         'Content-Type': 'application/json',
-        // Authorization: token,
       },
     });
-
-    console.log('user profile');
-    console.log(response.data);
 
     dispatch({
       type: GET_PROFILE_SUCCESS,
@@ -31,7 +24,6 @@ const getProfile = (userid) => async (dispatch) => {
       type: GET_PROFILE_FAIL,
       payload: error,
     });
-    console.log(error);
   }
 };
 

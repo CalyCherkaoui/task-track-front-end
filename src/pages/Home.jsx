@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
@@ -22,8 +21,6 @@ const Home = () => {
 
   const routinesList = useSelector((state) => state.routines.routines);
   const loading = useSelector((state) => state.routines.loading);
-
-  console.log(routinesList);
 
   if (loading) {
     return (

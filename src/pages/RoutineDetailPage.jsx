@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Redirect, Link } from 'react-router-dom';
@@ -24,9 +23,6 @@ const RoutineDetailPage = () => {
 
   const tasks = useSelector((state) => state.routines.routine_tasks);
   const loading = useSelector((state) => state.routines.loading);
-
-  console.log('routine detail page');
-  console.log(tasks);
 
   if (loading) {
     return <h3>Loading data ...</h3>;

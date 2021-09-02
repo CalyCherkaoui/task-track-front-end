@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';

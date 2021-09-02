@@ -142,7 +142,7 @@ const AddMeasurement = () => {
         <Row>
           <Link to="/home" className="col d-flex justify-content-center align-items-center p-4 text-info">
             <i className="fas fa-angle-double-left fa-2x" />
-            <span className="mx-2">Back to my routines</span>
+            <span className="mx-2">Back to my routines!</span>
           </Link>
         </Row>
       </Container>
