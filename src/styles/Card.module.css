@@ -44,7 +44,6 @@
   font-size: 1.2em;
   font-family: var(--font-primary);
   font-weight: 200;
-  color: var(--theme-grey);
+  color: var(--theme-grey) !important;
   text-transform: uppercase;
 }
-
