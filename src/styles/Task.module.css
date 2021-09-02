@@ -1,0 +1,73 @@
+.measurement_header {
+  height: 3em;
+  margin-top: 2em;
+  padding: 1em;
+}
+
+.measurement_header_text {
+  font-family: var(--font-primary);
+  font-size: 1.2em;
+  text-align: center;
+  color: var(--theme-grey);
+  font-weight: 400;
+  /* text-transform: uppercase; */
+}
+
+.measurement_date_icon {
+  /* background-color: crimson; */
+  width: 2em;
+}
+
+.measurement_date_icon i {
+  font-size: 1.9em;
+  color: var(--theme-grey);
+}
+
+.measurement_date_text {
+  font-size: 1.2em;
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin-left: 15px;
+}
+
+.measurement_progress_vertical_wrapper {
+  /* background-color: cyan; */
+  height: 3em;
+  width: 2em;
+  /* position: relative; */
+}
+
+.measurement_progress_vertical {
+  /* position: absolute; */
+  margin-left: 1em;
+}
+
+.measurement_progress_text {
+  font-size: 0.9em;
+  font-family: var(--font-secondary);
+  color: var(--theme-grey);
+  padding-left: 1em;
+}
+
+/* .task_info_wrapper {
+  background-color: lightcoral;
+}
+
+.task_info_table {
+  background-color: lawngreen;
+} */
+
+.task_info_graph_wrapper {
+  position: relative;
+}
+
+.task_info_graph_text {
+  position: absolute;
+  left: 38%;
+  top: 38%;
+  color: var(--blue-dark);
+  font-size: 1.6em;
+  font-family: var(--font-primary);
+  font-weight: 500;
+}

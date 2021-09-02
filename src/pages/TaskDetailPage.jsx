@@ -6,13 +6,15 @@ import {
 } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 import Moment from 'moment';
-import Chart from 'react-google-charts';
+// import Chart from 'react-google-charts';
+import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { getTask, deleteTask, clearEditTaskState } from '../actions/tasks';
 import { getAllTasks } from '../actions/measurements';
-// import taskStyles from '../styles/Task.module.css';
-// import statsStyles from '../styles/Stats.module.css';
-import styles from '../styles/Card.module.css';
+import taskStyles from '../styles/Task.module.css';
+import cardstyles from '../styles/Card.module.css';
+import detailStyles from '../styles/DetailPage.module.css';
+import ProgressBar from '../component/ProgressBar';
 
 const TaskDetailPage = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -71,21 +73,34 @@ const TaskDetailPage = () => {
   const listMeasurements = (measurements)
     ? (measurements.map(
       (element) => (
-        <li className={styles.card_wrapper} key={`key_${element.id}`}>
-          <div>
-            <i className="fas fa-circle" />
-            <div className={styles.card_title}>
+        <div
+          className={`${taskStyles.card_wrapper} d-flex flex-column g-0`}
+          key={`key_${element.id}`}
+        >
+          <div className="d-flex flex-row align-items-center">
+            <div className={`${taskStyles.measurement_date_icon}`}>
+              <i className="fas fa-circle" />
+            </div>
+            <div className={`${taskStyles.measurement_date_text}`}>
               {Moment(element.attributes['created-at']).format('MMM DD HH:mm')}
             </div>
           </div>
-          <div>
-            <i className={element.attributes.icon} />
-            <div className={styles.card_title}>
-              {element.attributes.quantity}
-              {element.attributes.unity}
+          <div className="d-flex flex-row align-items-center">
+            <div className={`${taskStyles.measurement_progress_vertical_wrapper} d-flex`}>
+              <div className={`${taskStyles.measurement_progress_vertical} vr`} />
+            </div>
+            <div className={taskStyles.measurement_progress_text}>
+              Completed
+              {' '}
+              <span>
+                {element.attributes.quantity}
+                {element.attributes.unity}
+              </span>
+              {' '}
+              of the overall goal.
             </div>
           </div>
-        </li>
+        </div>
       ),
     ))
     : (
@@ -99,87 +114,95 @@ const TaskDetailPage = () => {
     const total = parseInt(data.attributes['measurements-total'], 10);
     const progress = Math.round((total * 100) / data.attributes.goal) || 0;
     const madeProgress = progress >= 100 ? 100 : progress;
-    const leftProgress = 100 - madeProgress;
     return (
-      <div>
-        <Button
-          variant="outline-danger"
-          size="lg"
-          onClick={() => handleDelete(parseInt(data.id, 10))}
-        >
-          Delete Tsk
-        </Button>
-        <h1>{data.attributes.name}</h1>
-        <h2>
-          priority:
-          {data.attributes.priority}
-        </h2>
-        <h2>
-          <Link to={`/routines/${parseInt(data.attributes['routine-id'], 10)}`}>
-            from &nbsp;
-            {data.attributes.routine}
-            &nbsp;
-            routine
+      <Container>
+        <Row className="my-3">
+          <Link to="/addtask" className={cardstyles.list_header_text}>
+            <Col className={`${detailStyles.detail_pg_header}`}>
+              <i className={data.attributes.icon} />
+              {' '}
+              {data.attributes.name}
+            </Col>
           </Link>
-        </h2>
-        <h3>
-          Goal:
-          {data.attributes.goal}
-        </h3>
-        <h3>
-          Progress:
-          {progress}
-          <i className="fas fa-percent" />
-        </h3>
-        <div className="tracks__item__graph">
-          <Chart
-            width="300px"
-            height="300px"
-            chartType="PieChart"
-            loader={(
-              <Spinner animation="border" role="status" variant="info">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            )}
-            data={[['Task', 'Percentage'], ['', madeProgress], ['', leftProgress]]}
-            options={{
-              legend: 'none',
-              pieSliceText: `${madeProgress} %`,
-              pieStartAngle: 0,
-              tooltip: { trigger: 'none' },
-              slices: {
-                0: { color: 'blue' },
-                1: { color: 'white' },
-              },
-              pieHole: 0.5,
-              animation: {
-                startup: true,
-                easing: 'linear',
-                duration: 1500,
-              },
-              enableInteractivity: false,
-            }}
-            rootProps={{ 'data-testid': '6' }}
-          />
-        </div>
-      </div>
+        </Row>
+        <Row>
+          <Col className={`${taskStyles.task_info_wrapper} shadowed_small d-flex flex-column py-2`}>
+            <table className={`${taskStyles.task_info_table} table`}>
+              <tbody>
+                <tr>
+                  <td>Routine:</td>
+                  <td>
+                    <Link to={`/routines/${parseInt(data.attributes['routine-id'], 10)}`}>
+                      <i className={data.attributes.icon} />
+                      {' '}
+                      {data.attributes.routine}
+                    </Link>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Goal:</td>
+                  <td>
+                    {data.attributes.goal}
+                    {' '}
+                    {data.attributes.unit}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Priority:</td>
+                  <td>
+                    {data.attributes.priority}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <Button
+              variant="outline-danger"
+              size="lg"
+              onClick={() => handleDelete(parseInt(data.id, 10))}
+            >
+              Delete Task
+            </Button>
+          </Col>
+          <Col className="d-flex flex-column align-items-center justify-content-center">
+            <h5>Achievement</h5>
+            <div className={`${taskStyles.task_info_graph_wrapper}`}>
+              <ProgressBar
+                percentage={madeProgress}
+                size={130}
+                strokeWidth={10}
+                innCircleStroke="#f5f6fa"
+                exoCircleStroke="#379cf6"
+              />
+              <div className={taskStyles.task_info_graph_text}>
+                {madeProgress}
+                <i className="fas fa-percent" />
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     );
   };
 
   return (
     <div>
-      <div>
-        {
+      {
           (task) ? (
-            displayHeader(task)
+            <div>
+              <div>{displayHeader(task)}</div>
+              <div>
+                <div className={`${taskStyles.measurement_header} d-flex justify-content-center align-items-center shadowed_small`}>
+                  <h4 className={`${taskStyles.measurement_header_text}`}>Measurements recorded</h4>
+                </div>
+                <div className="my-3">
+                  {listMeasurements}
+                </div>
+              </div>
+            </div>
           ) : (
             <div>This task is not available</div>
           )
         }
-      </div>
-      <div>
-        {listMeasurements}
-      </div>
     </div>
   );
 };
