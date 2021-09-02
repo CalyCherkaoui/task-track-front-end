@@ -43,14 +43,14 @@ const RoutineDetailPage = () => {
     if (list.length === 0) {
       return (
         <div className="w-70">
-          <Container>
+          <Container className="my-4">
             <Row className={`${cardstyles.list_header_wrapper} d-flex align-items-baseline`}>
               <Col className={`box_flex_col_centered ${cardstyles.list_header_icon}`} xs={2}>
                 <span>
                   <i className="fas fa-coffee fa-1x" />
                 </span>
               </Col>
-              <Col className="box_flex_col_centered g-0" xs={10}>
+              <Col className="box_flex_col_centered" xs={10}>
                 <Link to="/addtask" className={cardstyles.list_header_text}>
                   No routine set yet!
                   Create a task!
