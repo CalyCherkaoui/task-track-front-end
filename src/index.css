@@ -43,6 +43,7 @@ a {
   --theme-blue: rgb(0, 234, 255);
   --theme-green: #86df81;
   --theme-grey: #323943;
+  --theme-light-grey: rgb(216, 214, 214);
 
   --white: rgb(255, 255, 255);
   --black: #1e1e1e;
