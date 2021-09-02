@@ -7,12 +7,12 @@
 
 .nav_logo_typo_second {
   color: var(--yellow);
-  font-size: 0.80em !important;
+  font-size: 0.8em !important;
   font-family: var(--font-logo-secondary) !important;
 }
 
 .nav_link_typo {
-  color: var(--white)  !important;
+  color: var(--white) !important;
   font-family: var(--font-primary);
   font-weight: 400;
   text-transform: uppercase;

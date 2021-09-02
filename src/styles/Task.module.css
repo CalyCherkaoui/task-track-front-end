@@ -10,6 +10,7 @@
   text-align: center;
   color: var(--theme-grey);
   font-weight: 400;
+
   /* text-transform: uppercase; */
 }
 
@@ -35,6 +36,7 @@
   /* background-color: cyan; */
   height: 3em;
   width: 2em;
+
   /* position: relative; */
 }
 

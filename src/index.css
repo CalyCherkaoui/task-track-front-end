@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&family=Work+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
 *,
 *::after,
 *::before {
@@ -18,6 +19,7 @@ html {
 
 body {
   box-sizing: border-box;
+
   /* position: relative; */
   font-size: 1em;
 }
@@ -30,9 +32,7 @@ ul {
 
 a {
   text-decoration: none !important;
-  color: none;
 }
-
 
 :root {
   --font-primary: 'Inter', sans-serif;
@@ -45,17 +45,14 @@ a {
   --theme-green: #86df81;
   --theme-grey: #323943;
   --theme-light-grey: hsl(0, 0%, 94%);
-
   --white: rgb(255, 255, 255);
   --black: #1e1e1e;
   --pink: #ff5ab7;
   --tangerine: #da4221;
   --yellow: #fca311;
   --blue-dark: #0f4c81;
-
   --mobile-width-max: 480px;
   --mobile-height-max: 95vh;
-
   --mobile-width-min: 320px;
   --mobile-height-min: 740px;
 }
@@ -77,9 +74,12 @@ a {
   min-width: var(--mobile-width-min);
   max-height: var(--mobile-height-max);
   min-height: var(--mobile-height-min);
+
   /* background-color: aqua; */
+
   /* border: aqua solid 3px; */
   position: relative;
+
   /* background-color: var(--theme-light-grey); */
 }
 

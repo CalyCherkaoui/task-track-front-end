@@ -36,7 +36,7 @@
 }
 
 .footer_nav_text {
-  font-size: 0.80em;
+  font-size: 0.8em;
   font-family: var(--font-primary);
   font-weight: 200;
   margin-top: 5px;
@@ -44,7 +44,7 @@
 }
 
 .footer_simple_link {
- color: var(--theme-blue);
+  color: var(--theme-blue);
 }
 
 .footer_simple_separator {

@@ -7,12 +7,14 @@
 .card_wrapper {
   width: 30%;
   color: var(--theme-grey);
+
   /* background-color: aqua; */
 }
 
 .card_wrapper a {
   color: var(--theme-grey);
   height: 100%;
+
   /* background-color: cornflowerblue; */
 }
 
@@ -26,6 +28,7 @@
   font-family: var(--font-primary);
   text-transform: capitalize;
   font-weight: 300;
+
   /* background-color: brown; */
 }
 
