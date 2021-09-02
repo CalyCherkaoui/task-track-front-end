@@ -18,7 +18,7 @@ html {
 
 body {
   box-sizing: border-box;
-  position: relative;
+  /* position: relative; */
   font-size: 1em;
 }
 
@@ -41,10 +41,10 @@ a {
   --font-logo-secondary: 'Caveat', cursive;
 
   /* --theme-blue-dark: rgb(98, 181, 229); */
-  --theme-blue: rgb(0, 234, 255);
+  --theme-blue: #41b5e8;
   --theme-green: #86df81;
   --theme-grey: #323943;
-  --theme-light-grey: rgb(216, 214, 214);
+  --theme-light-grey: hsl(0, 0%, 94%);
 
   --white: rgb(255, 255, 255);
   --black: #1e1e1e;
@@ -56,8 +56,8 @@ a {
   --mobile-width-max: 480px;
   --mobile-height-max: 95vh;
 
-  --mobile-width-min: 300px;
-  --mobile-height-min: 735px;
+  --mobile-width-min: 320px;
+  --mobile-height-min: 740px;
 }
 
 .shadowed_small {
@@ -78,8 +78,9 @@ a {
   max-height: var(--mobile-height-max);
   min-height: var(--mobile-height-min);
   /* background-color: aqua; */
-  border: aqua solid 3px;
+  /* border: aqua solid 3px; */
   position: relative;
+  /* background-color: var(--theme-light-grey); */
 }
 
 .box_flex_col_centered {
