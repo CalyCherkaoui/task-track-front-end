@@ -2,28 +2,25 @@ import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 const ProgressBar = (props) => {
-  const [offset, setOffset] = useState(0); //
-  // eslint-disable-next-line max-len
-  const circleRef = useRef(null); // produces a reference to the second circle, adds a CSS transition property to the circle
+  const [offset, setOffset] = useState(0);
+  const circleRef = useRef(null);
   const {
-    size, // width and height of the square SVG
-    percentage, // progress value
-    strokeWidth, // the width of the stroke
-    innCircleStroke, // Stroke color of the inner circle
-    exoCircleStroke, // Stroke color of the extern circle
+    size,
+    percentage,
+    strokeWidth,
+    innCircleStroke,
+    exoCircleStroke,
   } = props;
 
   const center = size / 2;
-  const radius = (size - strokeWidth) / 2; // rdius of the path to fit perfectly inside the viewBox
+  const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
 
-  // calculate the position of the progress
-  // After calculating the progressOffset, the setOffset method is used to update the offset
   useEffect(() => {
     const progressOffset = ((100 - percentage) / 100) * circumference;
     setOffset(progressOffset);
     circleRef.current.style = 'transition: 1500ms ease-in-out;';
-  }, [offset, setOffset, circumference, percentage]); // These properties are dependencies
+  }, [offset, setOffset, circumference, percentage]);
   return (
     <div>
       <svg
@@ -33,13 +30,12 @@ const ProgressBar = (props) => {
       >
         <circle // the inner circle
           className="in_circle"
-          cx={center} // coordinate x axis
-          cy={center} // coordinate y axis
-          r={radius} // circle radius
-          stroke={innCircleStroke} // color of the stroke
-          strokeWidth={strokeWidth} // width of the stroke
-          // eslint-disable-next-line max-len
-          strokeDasharray={circumference} // To control the dash's length and the spacing between each dash
+          cx={center}
+          cy={center}
+          r={radius}
+          stroke={innCircleStroke}
+          strokeWidth={strokeWidth}
+          strokeDasharray={circumference}
         />
         <circle
           className="exo_circle"

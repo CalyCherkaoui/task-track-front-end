@@ -49,7 +49,7 @@ const AddTask = () => {
       setTimeout(() => {
         document.getElementById('success_notif').style.display = 'none';
         dispatch(clearNotification());
-      }, 4000);
+      }, 3000);
     }
 
     if (error) {
@@ -57,7 +57,7 @@ const AddTask = () => {
       dispatch(clearEditTaskState());
       setTimeout(() => {
         document.getElementById('errors_notif').style.display = 'none';
-      }, 4000);
+      }, 3000);
     }
   });
 

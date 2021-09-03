@@ -44,7 +44,7 @@ const AddMeasurement = () => {
       setTimeout(() => {
         document.getElementById('success_notif').style.display = 'none';
         dispatch(clearNotification());
-      }, 6000);
+      }, 3000);
     }
 
     if (error) {
@@ -52,7 +52,7 @@ const AddMeasurement = () => {
       dispatch(clearEditMeasurementState());
       setTimeout(() => {
         document.getElementById('errors_notif').style.display = 'none';
-      }, 6000);
+      }, 3000);
     }
   }, [edit_success, error]);
 
