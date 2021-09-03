@@ -63,24 +63,12 @@ a {
   box-shadow: 0 2px 6px 0 rgba(10, 22, 78, 0.15);
 }
 
-.shadowed_big {
-  -webkit-box-shadow: 13px 17px 50px 5px rgba(0, 0, 0, 0.33);
-  -moz-box-shadow: 13px 17px 50px 5px rgba(0, 0, 0, 0.33);
-  box-shadow: 13px 17px 50px 5px rgba(0, 0, 0, 0.33);
-}
-
 #root {
   max-width: var(--mobile-width-max);
   min-width: var(--mobile-width-min);
   max-height: var(--mobile-height-max);
   min-height: var(--mobile-height-min);
-
-  /* background-color: aqua; */
-
-  /* border: aqua solid 3px; */
   position: relative;
-
-  /* background-color: var(--theme-light-grey); */
 }
 
 .box_flex_col_centered {
