@@ -1,0 +1,72 @@
+.long_card_wrapper {
+  margin-bottom: 5px;
+  border: solid 1px var(--theme-light-grey);
+}
+
+.long_card_title_wrapper {
+  background-color: var(--theme-green);
+}
+
+.long_card_title {
+  font-family: var(--font-primary);
+  font-size: 1.5em;
+  font-weight: 500;
+  color: var(--theme-grey);
+  text-transform: capitalize;
+}
+
+.long_card_title_emph {
+  font-family: var(--font-secondary);
+  font-size: 0.8em;
+  font-weight: 300;
+  color: var(--blue-dark);
+}
+
+.long_card_graph_wrapper {
+  position: relative;
+}
+
+.long_card_graph {
+  padding: 5px;
+}
+
+.long_card_graph_text {
+  position: absolute;
+  top: 36%;
+  left: 36%;
+  font-size: 1em;
+  font-family: var(--font-primary);
+  color: var(--blue-dark);
+  font-weight: 300;
+}
+
+.long_card_graph_text i {
+  margin-left: 2px;
+  font-size: 0.8em;
+}
+
+.long_card_data {
+  font-size: 1em;
+  color: var(--theme-grey);
+  font-family: var(--font-secondary);
+  text-align: center;
+}
+
+.long_card_data span {
+  font-size: 1.1em;
+  color: var(--blue-dark) !important;
+}
+
+.detail_pg_header {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.detail_pg_header:hover {
+  color: var(--theme-green);
+}
+
+.detail_pg_header i {
+  font-size: 1.5em;
+  margin-right: 8px;
+}

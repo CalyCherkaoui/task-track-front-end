@@ -1,0 +1,35 @@
+.aboutpage_wrapper {
+  height: 85vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.about_frame {
+  width: 65vh;
+  height: 65vh;
+  border: var(--tangerine) 8px solid;
+  padding: 2em;
+}
+
+.aboutpage_text {
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+  font-weight: 400;
+  overflow-wrap: break-word;
+  color: var(--theme-grey);
+}
+
+.about_icons {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+}
+
+.about_icons_link {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.about_icons_link:hover {
+  color: var(---pink);
+}

@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable no-console */
 import axios from 'axios';
 import API_ROOT from '../constantes/api';
 
@@ -24,9 +23,6 @@ export const getTask = (taskid) => async (dispatch) => {
       },
     });
 
-    console.log('task get success');
-    console.log(response.data);
-
     dispatch({
       type: GET_TASK_SUCCESS,
       payload: response.data,
@@ -36,8 +32,6 @@ export const getTask = (taskid) => async (dispatch) => {
       type: GET_TASK_FAIL,
       payload: error,
     });
-    console.log('task error');
-    console.log(error);
   }
 };
 
@@ -65,9 +59,6 @@ export const setTask = (
   try {
     const response = await axios.post(`${API_ROOT}tasks`, { task: taskData }, { headers });
 
-    console.log('task create');
-    console.log(response.data);
-
     dispatch({
       type: SET_TASK_SUCCESS,
       payload: response.data,
@@ -77,23 +68,13 @@ export const setTask = (
       type: SET_TASK_FAIL,
       payload: error,
     });
-    console.log('task create errors');
-    console.log(error);
   }
 };
 
 export const deleteTask = (taskid) => async (dispatch) => {
   axios.defaults.headers.common.Authorization = sessionStorage.getItem('token');
-  // const headers = {
-  //   'Content-Type': 'application/json',
-  // };
-
   try {
     const response = await axios.delete(`${API_ROOT}tasks/${taskid}`);
-
-    console.log('task update');
-    console.log(response.data);
-
     dispatch({
       type: DELETE_TASK_SUCCESS,
       payload: response.data,
@@ -103,8 +84,6 @@ export const deleteTask = (taskid) => async (dispatch) => {
       type: DELETE_TASK_FAIL,
       payload: error,
     });
-    console.log('task DELETE errors');
-    console.log(error);
   }
 };
 
@@ -117,9 +96,6 @@ export const getAllroutines = () => async (dispatch) => {
       },
     });
 
-    console.log('allroutines get success');
-    console.log(response.data);
-
     sessionStorage.setItem('routineslist', response.data);
 
     dispatch({
@@ -131,8 +107,6 @@ export const getAllroutines = () => async (dispatch) => {
       type: GET_ROUTINES_TASK_FAIL,
       payload: error,
     });
-    console.log('allroutines error');
-    console.log(error);
   }
 };
 

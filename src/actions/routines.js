@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import axios from 'axios';
 import API_ROOT from '../constantes/api';
 
@@ -18,9 +17,6 @@ export const getRoutine = (routineid) => async (dispatch) => {
       },
     });
 
-    console.log('routine success');
-    console.log(response.data);
-
     dispatch({
       type: GET_ROUTINE_SUCCESS,
       payload: response.data,
@@ -30,8 +26,6 @@ export const getRoutine = (routineid) => async (dispatch) => {
       type: GET_ROUTINE_FAIL,
       payload: error,
     });
-    console.log('routine error');
-    console.log(error);
   }
 };
 
@@ -45,9 +39,6 @@ export const getRoutines = () => async (dispatch) => {
       },
     });
 
-    console.log('routine index');
-    console.log(response.data);
-
     dispatch({
       type: GET_ROUTINES_SUCCESS,
       payload: response.data,
@@ -57,7 +48,5 @@ export const getRoutines = () => async (dispatch) => {
       type: GET_ROUTINES_FAIL,
       payload: error,
     });
-    console.log('routine index errors');
-    console.log(error);
   }
 };

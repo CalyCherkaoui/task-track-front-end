@@ -2,9 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 import { getRoutines } from '../actions/routines';
 import { setRoutine, clearEditRoutineState } from '../actions/adminBoard';
 import { setNotification, clearNotification } from '../actions/notifications';
+import styles from '../styles/Form.module.css';
 
 const AddRoutine = () => {
   const { user: currentUser } = useSelector((state) => state.authentication);
@@ -52,60 +54,87 @@ const AddRoutine = () => {
   }, [edit_success, error]);
 
   return (
-    <div>
-      <h1>
-        Add a routine!
-      </h1>
-      <h2>
-        <i className="fas fa-tools" />
-        Tool-Box
-      </h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="routine_name_input">
-          Name:
-          <input
-            id="routine_name_input"
-            type="text"
-            name="name"
-            placeholder="Routine name!"
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <label htmlFor="routine_icon_input">
-          icon:
-          <input
-            id="routine_icon_input"
-            type="text"
-            name="icon"
-            placeholder="Routine icon!"
-            onChange={(e) => setIcon(e.target.value)}
-            required
-          />
-        </label>
-        <label htmlFor="routine_priority_input">
-          Priority:
-          <input
-            id="measurement_priority_input"
-            type="number"
-            name="priority"
-            min="1"
-            max="10"
-            placeholder="Set a priority "
-            onChange={(e) => setPriority(e.target.value)}
-            required
-          />
-        </label>
-        <button
-          type="submit"
-        >
-          Add Routine!
-        </button>
-      </form>
-      <Link to="/admin">
-        <i className="fas fa-arrow-left fa-2x" />
-        Back to Routines
-      </Link>
+    <div className={`${styles.form_wrapper} box_flex_col_centered p-4`}>
+      <Container className="g-0 shadowed_small">
+        <Row className={`${styles.form_header_wrapper} g-0 d-flex align-items-baseline`}>
+          <Col className={`box_flex_col_centered g-0 ${styles.form_header_icon}`} xs={3}>
+            <span>
+              <i className="fas fa-tools" />
+            </span>
+          </Col>
+          <Col className="box_flex_col_centered g-0" xs={9}>
+            <p className={styles.form_header_text}>
+              Admin Toolbox
+            </p>
+          </Col>
+        </Row>
+        <Row className={`${styles.form_form_wrapper} g-0`}>
+          <Col className="box_flex_col_centered py-4">
+            <form
+              onSubmit={handleSubmit}
+              className={`${styles.form_form} px-3`}
+            >
+              <label
+                htmlFor="routine_name_input"
+                className={`${styles.form_label} box_flex_col_centered`}
+              >
+                <input
+                  id="routine_name_input"
+                  type="text"
+                  name="name"
+                  placeholder="Routine name!"
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className={styles.form_input}
+                />
+              </label>
+              <label
+                htmlFor="routine_icon_input"
+                className={`${styles.form_label} box_flex_col_centered`}
+              >
+                <p>Enter class name of free icon tag from fontawsome.com </p>
+                <input
+                  id="routine_icon_input"
+                  type="text"
+                  name="icon"
+                  placeholder="Routine icon!"
+                  onChange={(e) => setIcon(e.target.value)}
+                  required
+                  className={styles.form_input}
+                />
+              </label>
+              <label
+                htmlFor="routine_priority_input"
+                className={`${styles.form_label} box_flex_col_centered`}
+              >
+                <input
+                  id="routine_priority_input"
+                  type="number"
+                  name="priority"
+                  min="1"
+                  max="10"
+                  placeholder="Set a priority"
+                  onChange={(e) => setPriority(e.target.value)}
+                  required
+                  className={styles.form_input}
+                />
+              </label>
+              <button
+                type="submit"
+                className={styles.form_submit}
+              >
+                Add Routine!
+              </button>
+            </form>
+          </Col>
+        </Row>
+        <Row>
+          <Link to="/admin" className="col d-flex justify-content-center align-items-center p-3 text-info">
+            <i className="fas fa-angle-double-left fa-2x" />
+            <span className="mx-2">Back to dashboard</span>
+          </Link>
+        </Row>
+      </Container>
     </div>
   );
 };

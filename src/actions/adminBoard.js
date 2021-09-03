@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable no-console */
 import axios from 'axios';
 import API_ROOT from '../constantes/api';
 
@@ -30,10 +29,6 @@ export const setRoutine = (
 
   try {
     const response = await axios.post(`${API_ROOT}routines`, { routine: routineData }, { headers });
-
-    console.log('routine create');
-    console.log(response.data);
-
     dispatch({
       type: SET_ROUTINE_SUCCESS,
       payload: response.data,
@@ -43,8 +38,6 @@ export const setRoutine = (
       type: SET_ROUTINE_FAIL,
       payload: error,
     });
-    console.log('ROUTINE create errors');
-    console.log(error);
   }
 };
 
@@ -53,10 +46,6 @@ export const deleteRoutine = (routineid) => async (dispatch) => {
 
   try {
     const response = await axios.delete(`${API_ROOT}routines/${routineid}`);
-
-    console.log('routine update');
-    console.log(response.data);
-
     dispatch({
       type: DELETE_ROUTINE_SUCCESS,
       payload: response.data,
@@ -66,8 +55,6 @@ export const deleteRoutine = (routineid) => async (dispatch) => {
       type: DELETE_ROUTINE_FAIL,
       payload: error,
     });
-    console.log('ROUTINE DELETE errors');
-    console.log(error);
   }
 };
 
