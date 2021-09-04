@@ -1,12 +1,11 @@
 const userDataFixt = {
   data: {
-    id: '1',
+    id: '18',
     type: 'users',
     attributes: {
-      email: 'welda@test.com',
-      username: 'welda',
-      id: 16,
-      date: '2021-08-25T20:00:42.047Z',
+      email: 'sailormoon@test.com',
+      username: 'sailormoon',
+      id: 18,
     },
     relationships: {
       tasks: {
@@ -14,9 +13,6 @@ const userDataFixt = {
           included: false,
         },
       },
-    },
-    links: {
-      self: '/api/v1/users/1',
     },
     meta: {
       admin: false,
