@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly The navigation bar component Matches Navigation snapshot 1`] = `
+<nav
+  className="navigation_container justify-content-between navbar navbar-expand navbar-light"
+>
+  <a
+    className="navbar-brand"
+    href="/"
+  >
+    <span
+      className="nav_logo_typo_main"
+    >
+      TASK
+    </span>
+    <span
+      className="nav_logo_typo_second"
+    >
+      &Track
+    </span>
+  </a>
+  <div
+    className="navbar-nav"
+    onKeyDown={[Function]}
+  >
+    <li
+      className="nav-item"
+    >
+      <a
+        className="nav_link_typo nav-link"
+        href="/about"
+        onClick={[Function]}
+      >
+        About
+      </a>
+    </li>
+    <div
+      className="navbar-nav ml-auto"
+    >
+      <li
+        className="nav-item"
+      >
+        <a
+          className="nav_link_typo nav-link"
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+      </li>
+      <li
+        className="nav-item"
+      >
+        <a
+          className="nav_link_typo nav-link"
+          href="/signup"
+          onClick={[Function]}
+        >
+          Sign-Up
+        </a>
+      </li>
+    </div>
+  </div>
+</nav>
+`;
