@@ -6,7 +6,7 @@ import store from '../store';
 import AlertsNotifications from '../component/AlertNotifications';
 
 describe(
-  'Renders correctly The navigation bar component',
+  'Renders correctly Alerts notifications component',
   () => {
     let container;
     const message = 'Test Notification';

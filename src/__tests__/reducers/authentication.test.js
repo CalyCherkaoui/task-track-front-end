@@ -1,4 +1,4 @@
-import userFixt from '../fixtures/userFixt';
+import userFixt from '../../fixtures/userFixt';
 import autheticationReducer from '../../reducers/authentication';
 import {
   REGISTER_SUCCESS,

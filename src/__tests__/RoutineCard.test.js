@@ -4,10 +4,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../store';
 import RoutineCard from '../component/RoutineCard';
-import routineFixture from './fixtures/routineFixt';
+import routineFixture from '../fixtures/routineFixt';
 
 describe(
-  'Renders correctly The navigation bar component',
+  'Renders correctly Routine card component',
   () => {
     let container;
     beforeEach(() => {
@@ -28,7 +28,7 @@ describe(
     );
 
     it(
-      'Matches Navigation snapshot',
+      'Matches Routine Card snapshot',
       () => {
         const rendered = renderer.create(
           <Provider store={store}>

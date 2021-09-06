@@ -1,5 +1,5 @@
-import routineFixture from '../fixtures/routineFixt';
-import routinesFixture from '../fixtures/routinesFixt';
+import routineFixture from '../../fixtures/routineFixt';
+import routinesFixture from '../../fixtures/routinesFixt';
 import routineReducer from '../../reducers/routines';
 import {
   GET_ROUTINE_SUCCESS,

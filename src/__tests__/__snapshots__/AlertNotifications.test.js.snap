@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders correctly The navigation bar component Matches AlertNotifications snapshot 1`] = `
+exports[`Renders correctly Alerts notifications component Matches AlertNotifications snapshot 1`] = `
 <div>
   <div
     id="success_notif"

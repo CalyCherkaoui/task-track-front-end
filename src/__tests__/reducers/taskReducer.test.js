@@ -1,4 +1,4 @@
-import taskFixture from '../fixtures/taskFixt';
+import taskFixture from '../../fixtures/taskFixt';
 import taskReducer from '../../reducers/task';
 import {
   GET_TASK_SUCCESS,
@@ -7,7 +7,7 @@ import {
   GET_ROUTINES_TASK_SUCCESS,
   CLEAR_EDIT_TASK_STATE,
 } from '../../actions/types';
-import allRoutinesDataFixture from '../fixtures/allroutineFixt';
+import allRoutinesDataFixture from '../../fixtures/allroutineFixt';
 
 describe(
   'Task data response reducer',

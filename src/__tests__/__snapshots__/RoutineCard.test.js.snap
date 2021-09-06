@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders correctly The navigation bar component Matches Navigation snapshot 1`] = `
+exports[`Renders correctly Routine card component Matches Routine Card snapshot 1`] = `
 <div
   className="card_wrapper"
 >
