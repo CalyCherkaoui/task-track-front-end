@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly The navigation bar component Matches Navigation snapshot 1`] = `
+<div
+  className="card_wrapper"
+>
+  <div
+    className="card_icon"
+  >
+    <i
+      className="GiBookmarklet fa-2x"
+    />
+  </div>
+  <div
+    className="card_title"
+  >
+    tech-reading
+  </div>
+  <div
+    className="card_title"
+  >
+    2
+  </div>
+</div>
+`;
