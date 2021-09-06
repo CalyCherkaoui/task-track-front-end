@@ -5,7 +5,7 @@ import store from '../store';
 import RoutineDetailPage from '../pages/RoutineDetailPage';
 
 describe(
-  'Renders correctly the RoutineDetail page',
+  'Renders correctly Routine Detail page',
   () => {
     it(
       'Matches RoutineDetailPage snapshot',
