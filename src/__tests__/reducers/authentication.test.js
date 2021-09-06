@@ -2,9 +2,7 @@ import userFixt from '../fixtures/userFixt';
 import autheticationReducer from '../../reducers/authentication';
 import {
   REGISTER_SUCCESS,
-  // REGISTER_FAIL,
   LOGIN_SUCCESS,
-  // LOGIN_FAIL,
   LOGOUT,
 } from '../../actions/types';
 
