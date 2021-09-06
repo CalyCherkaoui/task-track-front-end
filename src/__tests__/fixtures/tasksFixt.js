@@ -1,5 +1,3 @@
-import taskDataFixture from './taskFixt';
-
 const tasksDataFixture = {
   data: [
     {
