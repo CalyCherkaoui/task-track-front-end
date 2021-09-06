@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly The navigation bar component Matches AlertNotifications snapshot 1`] = `
+<div>
+  <div
+    id="success_notif"
+    style={
+      Object {
+        "color": "green",
+        "display": "none",
+      }
+    }
+  >
+    <div
+      className="fade alert alert-success show"
+      role="alert"
+    >
+      Test Notification
+    </div>
+  </div>
+  <div
+    id="errors_notif"
+    style={
+      Object {
+        "color": "red",
+        "display": "none",
+      }
+    }
+  >
+    <div
+      className="fade alert alert-danger show"
+      role="alert"
+    >
+      Oops! Something went wrong! Try again!
+    </div>
+  </div>
+</div>
+`;
