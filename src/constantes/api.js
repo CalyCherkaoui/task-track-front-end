@@ -1,3 +1,3 @@
-const API_ROOT = 'http://localhost:3001/api/v1/';
+const API_ROOT = 'https://task-n-track.herokuapp.com/api/v1/';
 
 export default API_ROOT;
