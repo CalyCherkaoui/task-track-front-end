@@ -7,7 +7,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  routine: null,
+  // routine: null,
   loading: true,
   error: null,
   edit_success: false,
@@ -51,7 +51,7 @@ const adminReducer = (state = initialState, action) => {
     case CLEAR_EDIT_ROUTINE_STATE:
       return {
         ...state,
-        routine: null,
+        // routine: null,
         loading: false,
         edit_success: false,
         error: null,

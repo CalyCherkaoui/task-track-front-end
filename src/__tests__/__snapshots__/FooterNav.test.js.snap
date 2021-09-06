@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly The Footer navigation component Matches Footer Navigation snapshot 1`] = `
+<div
+  className="footer_wrapper box_flex_col_centered"
+>
+  <div
+    className="g-0 container"
+  />
+</div>
+`;

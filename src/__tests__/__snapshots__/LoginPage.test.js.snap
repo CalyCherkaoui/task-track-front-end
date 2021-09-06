@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly Login page component Matches Login snapshot 1`] = `
+<div
+  className="form_wrapper box_flex_col_centered p-4"
+>
+  <div
+    className="g-0 shadowed_small container"
+  >
+    <div
+      className="form_header_wrapper g-0 row"
+    >
+      <div
+        className="box_flex_col_centered g-0 col"
+      >
+        <p
+          className="form_header_text"
+        >
+          Login
+        </p>
+      </div>
+    </div>
+    <div
+      className="form_form_wrapper g-0 row"
+    >
+      <div
+        className="box_flex_col_centered py-4 col"
+      >
+        <form
+          className="form_form px-3"
+          onSubmit={[Function]}
+        >
+          <label
+            className="form_label box_flex_col_centered"
+            htmlFor="login_username_input"
+          >
+            <input
+              className="form_input"
+              id="login_username_input"
+              name="username"
+              onChange={[Function]}
+              placeholder="Enter your username"
+              required={true}
+              type="text"
+            />
+          </label>
+          <label
+            className="form_label box_flex_col_centered"
+            htmlFor="login_email_input"
+          >
+            <input
+              className="form_input"
+              id="login_email_input"
+              name="email"
+              onChange={[Function]}
+              placeholder="Enter your email!"
+              required={true}
+              type="email"
+            />
+          </label>
+          <label
+            className="form_label box_flex_col_centered"
+            htmlFor="login_password_input"
+          >
+            <input
+              className="form_input"
+              id="login_password_input"
+              name="password"
+              onChange={[Function]}
+              placeholder="Enter your password!"
+              required={true}
+              type="password"
+            />
+          </label>
+          <button
+            className="form_submit"
+            type="submit"
+          >
+            Log me in!
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
