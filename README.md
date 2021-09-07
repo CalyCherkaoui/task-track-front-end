@@ -32,7 +32,7 @@ This project was built following the specifications and user stories given here:
 - [License](#license)
 
 ## Live demo
-[Link to the deployed App]()
+[Link to the deployed App](https://stupefied-tereshkova-39efa6.netlify.app)
 
 ## Back-end Api
 - [Check the GitHub repository of the backend-end api of the project here!](https://github.com/CalyCherkaoui/task-tracker-backend-api)
