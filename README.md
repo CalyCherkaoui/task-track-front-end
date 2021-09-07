@@ -20,7 +20,7 @@ This project was built following the specifications and user stories given here:
 - [About the project](#about-the-project)
 - [Built with](#built-with)
 - [Live demo](#live-demo)
-- [Walkthrough Video presentation](#walkthrough-video-presentation)
+- [Back-end Api](#back-en-api)
 - [Screenshots](#screenshots)
 - [Dependencies](#dependencies)
 - [Linting tools](#linting-tools)
@@ -34,8 +34,8 @@ This project was built following the specifications and user stories given here:
 ## Live demo
 [Link to the deployed App]()
 
-## Walkthrough video presentation
-[Check here a video presentation of the project]()
+## Back-end Api
+- [Check the GitHub repository of the backend-end api of the project here!](https://github.com/CalyCherkaoui/task-tracker-backend-api)
 
 ## Screenshots
 <br>
