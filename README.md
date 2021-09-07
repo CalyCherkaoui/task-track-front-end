@@ -229,7 +229,7 @@ To run the tests:
 $ npm test
 ```
 ## Automated tests
-<img width="600" src="./screenshots/Test.png">
+<img width="300" src="./screenshots/react-tests.png">
 <br>
 
 ## Author
