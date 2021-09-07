@@ -1,6 +1,6 @@
 # Task & Track | Front-end client side
 ## About the project
-In this project, I built the front-end side of a tracking application that allows you to track your daily tasks to install a healty daly routine.
+In this project, I built the front-end side of a tracking application that allows you to track your daily tasks to install a healthy daily routine.
 This project was built following the specifications and user stories given here:
 [Click here to read the projects specifications](https://www.notion.so/Final-Capstone-Project-Tracking-App-22e454da738c46efaf17721826841772)
 
