@@ -39,9 +39,7 @@ This project was built following the specifications and user stories given here:
 
 ## Screenshots
 <br>
-<span><img width="200" src="./screenshots/signup.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/routines.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/routine.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/task.png"></span>
-<br>
-<span><img width="200" src="./screenshots/profile.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/adTask.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/adminBoard.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/addRoutine.png"></span>
+<span><img width="200" src="./screenshots/signup.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/routines.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/routine.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/task.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/profile.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/adTask.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/adminBoard.png"></span>&nbsp &nbsp<span><img width="200" src="./screenshots/addRoutine.png"></span>
 <br>
 
 ## Dependencies
