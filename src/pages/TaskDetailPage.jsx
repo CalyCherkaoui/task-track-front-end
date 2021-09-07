@@ -123,7 +123,7 @@ const TaskDetailPage = () => {
           </Link>
         </Row>
         <Row>
-          <Col className={`${taskStyles.task_info_wrapper} shadowed_small d-flex flex-column py-2`}>
+          <Col className={`${taskStyles.task_info_wrapper} shadowed_small d-flex flex-column bg-white py-2`}>
             <table className={`${taskStyles.task_info_table} table`}>
               <tbody>
                 <tr>
@@ -188,8 +188,8 @@ const TaskDetailPage = () => {
             <div>
               <div>{displayHeader(task)}</div>
               <div>
-                <div className={`${taskStyles.measurement_header} d-flex justify-content-center align-items-center shadowed_small`}>
-                  <h4 className={`${taskStyles.measurement_header_text}`}>Measurements recorded</h4>
+                <div className={`${taskStyles.measurement_header} d-flex bg-white justify-content-center align-items-center shadowed_small`}>
+                  <h4 className={`${taskStyles.measurement_header_text} bg-white`}>Measurements recorded</h4>
                 </div>
                 <div className="my-3">
                   {listMeasurements}

@@ -1,6 +1,7 @@
 .long_card_wrapper {
   margin-bottom: 5px;
   border: solid 1px var(--theme-light-grey);
+  background-color: var(--white);
 }
 
 .long_card_title_wrapper {

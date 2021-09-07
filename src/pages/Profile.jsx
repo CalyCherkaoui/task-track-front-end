@@ -43,7 +43,7 @@ const Profile = () => {
             </Link>
           </Row>
           <Row>
-            <Col className={`${taskStyles.task_info_wrapper} shadowed_small d-flex flex-column py-2`}>
+            <Col className={`${taskStyles.task_info_wrapper} shadowed_small d-flex flex-column py-2 bg-white`}>
               <table className={`${taskStyles.task_info_table} table`}>
                 <tbody>
                   <tr>
@@ -127,7 +127,7 @@ const Profile = () => {
         </Col>
       </Row>
       <Row>
-        <div className={`${taskStyles.measurement_header} d-flex justify-content-center align-items-center shadowed_small`}>
+        <div className={`${taskStyles.measurement_header} d-flex justify-content-center align-items-center shadowed_small bg-white`}>
           <h4 className={`${taskStyles.measurement_header_text}`}>Your hero Task you are keeping track of:</h4>
         </div>
       </Row>

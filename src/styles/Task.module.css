@@ -39,7 +39,7 @@
 }
 
 .measurement_progress_text {
-  font-size: 0.9em;
+  font-size: 1em;
   font-family: var(--font-secondary);
   color: var(--theme-grey);
   padding-left: 1em;
@@ -51,10 +51,15 @@
 
 .task_info_graph_text {
   position: absolute;
-  left: 38%;
-  top: 38%;
+  left: 30%;
+  top: 34%;
   color: var(--blue-dark);
-  font-size: 1.6em;
+  font-size: 1.9em;
   font-family: var(--font-primary);
   font-weight: 500;
+}
+
+.task_info_graph_text i {
+  font-size: 1em !important;
+  margin-left: 3px;
 }
