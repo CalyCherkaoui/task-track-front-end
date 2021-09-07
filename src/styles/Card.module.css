@@ -6,6 +6,7 @@
 .card_wrapper {
   width: 30%;
   color: var(--theme-grey);
+  background-color: var(--white);
 }
 
 .card_wrapper a {

@@ -19,8 +19,6 @@ html {
 
 body {
   box-sizing: border-box;
-
-  /* position: relative; */
   font-size: 1em;
 }
 
@@ -40,18 +38,18 @@ a {
   --font-logo-brand: 'Fredericka the Great', cursive;
   --font-logo-secondary: 'Caveat', cursive;
 
-  /* --theme-blue-dark: rgb(98, 181, 229); */
   --theme-blue: #41b5e8;
   --theme-green: #86df81;
   --theme-grey: #323943;
-  --theme-light-grey: hsl(0, 0%, 94%);
+  --theme-light-grey: #F4F9F9;
   --white: rgb(255, 255, 255);
   --black: #1e1e1e;
   --pink: #ff5ab7;
   --tangerine: #da4221;
   --yellow: #fca311;
   --blue-dark: #0f4c81;
-  --mobile-width-max: 480px;
+
+  --mobile-width-max: 500px;
   --mobile-height-max: 95vh;
   --mobile-width-min: 320px;
   --mobile-height-min: 740px;
@@ -66,9 +64,10 @@ a {
 #root {
   max-width: var(--mobile-width-max);
   min-width: var(--mobile-width-min);
-  max-height: var(--mobile-height-max);
   min-height: var(--mobile-height-min);
   position: relative;
+  margin: auto;
+  background-color: var(--theme-light-grey);
 }
 
 .box_flex_col_centered {

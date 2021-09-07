@@ -31,7 +31,8 @@ const RoutineDetailPage = () => {
   const progressPercent = (val, goal) => {
     const intVal = parseInt(val, 10);
     const intGoal = parseInt(goal, 10);
-    const percentage = Math.round((intVal * 100) / intGoal) || 0;
+    const progress = Math.round((intVal * 100) / intGoal) || 0;
+    const percentage = progress >= 100 ? 100 : progress;
     return percentage;
   };
 

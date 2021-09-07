@@ -25,6 +25,7 @@
 
 .form_form {
   width: 100%;
+  background-color: var(--white);
 }
 
 .form_label {

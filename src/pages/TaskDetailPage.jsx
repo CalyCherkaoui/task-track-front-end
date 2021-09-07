@@ -101,7 +101,7 @@ const TaskDetailPage = () => {
       ),
     ))
     : (
-      <Link to="/addtask" className="nav-link">
+      <Link to="/measureup" className="nav-link">
         No measurement added yet ! create one!
         <i className="fas fa-plus" />
       </Link>

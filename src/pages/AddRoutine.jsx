@@ -55,7 +55,7 @@ const AddRoutine = () => {
 
   return (
     <div className={`${styles.form_wrapper} box_flex_col_centered p-4`}>
-      <Container className="g-0 shadowed_small">
+      <Container className="g-0 shadowed_small bg-white">
         <Row className={`${styles.form_header_wrapper} g-0 d-flex align-items-baseline`}>
           <Col className={`box_flex_col_centered g-0 ${styles.form_header_icon}`} xs={3}>
             <span>
