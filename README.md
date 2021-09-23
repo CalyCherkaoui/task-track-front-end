@@ -3,6 +3,14 @@
 In this project, I built the front-end side of a tracking application that allows you to track your daily tasks to install a healthy daily routine.
 This project was built following the specifications and user stories given here:
 [Click here to read the projects specifications](https://www.notion.so/Final-Capstone-Project-Tracking-App-22e454da738c46efaf17721826841772)
+### Main features:
+ - Secure authentication system that connects to Devise and JWT authentication in the Back-and
+ - Admin panel that allows the editing of routines' categories
+ - It allows the user to create a task that belongs to a routine selected from a list made by the Admin.
+ - It allows the user to take a measurement for a task.
+ - It displays lists of routines and tasks ordered by priority. 
+ - It displays charts and statistics of the progress.
+ - It displays a timeline of the measurements.
 
 ## Built with
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img width="5%" src="https://media.giphy.com/media/ln7z2eWriiQAllfVcn/giphy.gif" alt="Javascript"></a>
